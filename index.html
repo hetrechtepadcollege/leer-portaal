@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Portaal - Het Rechte Pad College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap&subset=latin-ext" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-blue: #001f3f;
+            --bg-color: #1f294d; /* Huisstijl van HRPC */
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-blue);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- LOGO FIX START --- */
+        .logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 20px 0; /* Iets meer ruimte boven het logo */
+}
+
+        .site-logo {
+            width: 100%;
+    max-width: 850px; /* Dit is ongeveer de breedte van de twee kaarten + gap */
+    height: auto;
+    display: block;
+        }
+
+        @media (max-width: 900px) {
+    .site-logo {
+        max-width: 90%; /* Op kleine schermen pakt hij 90% van de breedte */
+    }
+}
+
+        h1 {
+            color: var(--gold);
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            text-align: center;
+            color: white;
+            max-width: 600px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px 0;
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+        }
+
+        .play-btn {
+            background-color: var(--gold);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 20px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .coming-soon {
+            opacity: 0.5;
+            filter: grayscale(1);
+            cursor: not-allowed;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-url {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-wrapper">
+        <img src="images/HRPC-logo.png" alt="Logo" class="site-logo">
+    </div>
+    
+    <h1>Welkom in ons quizportaal!</h1>
+    <p class="subtitle">Ontdek al onze kennisquizzes en leer op een leuke manier meer over de islam.</p>
+
+    <div class="grid">
+        <a href="https://hetrechtepadcollege.github.io/ramadan-quiz-kids/" class="card">
+            <div>
+                <div class="emoji">🌙</div>
+                <h2>Ramadan Kennisquiz voor Kids</h2>
+                <p>Test je kennis over de regels, geschiedenis en de spirituele betekenis van de Ramadan.</p>
+            </div>
+            <div class="play-btn">Speel Nu ➔</div>
+        </a>
+
+        <div class="card coming-soon">
+            <div>
+                <div class="emoji">🕋</div>
+                <h2>De Hadj</h2>
+                <p>Alles over de bedevaart naar Mekka en de rituelen van de vijfde zuil van de islam.</p>
+            </div>
+            <div class="play-btn">Binnenkort</div>
+        </div>
+    </div>
+
+<footer>
+        <p class="footer-text">© 2026 Het Rechte Pad College</p>
+        <a href="https://www.hetrechtepad.nl" target="_blank" class="footer-link">Bezoek ook onze website: <span class="footer-url">www.hetrechtepad.nl</span></a>
+    </footer>
+
+</body>
+</html>
