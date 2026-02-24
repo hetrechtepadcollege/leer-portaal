@@ -35,7 +35,7 @@ const factsByMode = {
     items: [
       "Vasten betekent onthouding van eten en drinken tussen ochtendschemering en zonsondergang.",
       "Suḥūr en ifṭār zijn niet alleen eetmomenten, maar ook leermomenten rond discipline en dankbaarheid.",
-      "Niyyah (intentie) helpt jongeren begrijpen dat aanbidding bewust en doelgericht is.",
+      "Intentie (niyyah) helpt jongeren begrijpen dat aanbidding bewust en doelgericht is.",
       "Bij tijdelijke belemmeringen (zoals ziekte) ligt de nadruk op later inhalen van gemiste dagen.",
       "Voor 10-13 jaar is didactiek belangrijk: opbouwen, aanmoedigen en positieve begeleiding."
     ]
@@ -109,9 +109,9 @@ const quizQuestions = [
     ],
     answer: 1,
     explain:
-      "Niyyah is belangrijk voor een bewuste en geldige vastendag.",
+      "Intentie (niyyah) is belangrijk voor een bewuste en geldige vastendag.",
     mentorDetail:
-      "Laat kinderen de niyyah in eigen woorden formuleren; dat vergroot begrip zonder te veel abstract taalgebruik."
+      "Laat kinderen de intentie (niyyah) in eigen woorden formuleren; dat vergroot begrip zonder te veel abstract taalgebruik."
   },
   {
     question: "Welke uitspraak over kinderen klopt?",
@@ -298,7 +298,7 @@ function revealCard(index) {
 // Order game
 const correctOrder = [
   "Suḥūr eten",
-  "Niyyah maken voor de vastendag",
+  "Intentie maken voor de vastendag",
   "Overdag niet eten en drinken, en goed gedrag tonen",
   "Ifṭār bij zonsondergang",
   "Avondgebed en rust"
@@ -399,9 +399,9 @@ const tfStatements = [
     mentorDetail: "Koppel het verschil tussen gebed, maaltijd en feestmomenten."
   },
   {
-    text: "Niyyah betekent dat je bewust de intentie maakt om te vasten.",
+    text: "Intentie (niyyah) betekent dat je bewust de intentie maakt om te vasten.",
     isTrue: true,
-    explain: "Klopt. Niyyah is een bewuste intentie.",
+    explain: "Klopt. Intentie (niyyah) is een bewuste intentie.",
     mentorDetail: "Laat het kind de intentie in een korte eigen zin omschrijven."
   },
   {
@@ -639,10 +639,10 @@ const speedPool = [
     mentorDetail: "Laat een praktisch voorbeeld geven voor vandaag."
   },
   {
-    question: "Wat betekent niyyah?",
+    question: "Wat betekent intentie (niyyah)?",
     options: ["Een intentie", "Een toetje", "Een sportoefening"],
     answer: 0,
-    explain: "Niyyah is je bewuste intentie.",
+    explain: "Intentie (niyyah) is je bewuste intentie.",
     mentorDetail: "Laat het kind een korte intentie-zin maken."
   },
   {
@@ -681,10 +681,10 @@ const speedPool = [
     mentorDetail: "Bespreek hoe je kalm blijft in een lastig moment."
   },
   {
-    question: "Wat doe je met je niyyah?",
+    question: "Wat doe je met je intentie (niyyah)?",
     options: ["Je maakt een bewuste intentie", "Je negeert het", "Je stelt het uit tot morgenavond"],
     answer: 0,
-    explain: "Niyyah is je bewuste intentie om te vasten.",
+    explain: "Intentie (niyyah) is je bewuste intentie om te vasten.",
     mentorDetail: "Laat het kind de intentie in eigen woorden formuleren."
   },
   {
@@ -793,10 +793,10 @@ const speedPool = [
     mentorDetail: "Verbind dit aan klasafspraken en sociale veiligheid."
   },
   {
-    question: "Waarom is niyyah handig voor kinderen?",
+    question: "Waarom is intentie (niyyah) handig voor kinderen?",
     options: ["Het maakt doelen duidelijk", "Het is onbelangrijk", "Het maakt alles moeilijk"],
     answer: 0,
-    explain: "Niyyah helpt je doelgericht en bewust te handelen.",
+    explain: "Intentie (niyyah) helpt je doelgericht en bewust te handelen.",
     mentorDetail: "Laat het kind een dagdoel koppelen aan de intentie."
   },
   {
