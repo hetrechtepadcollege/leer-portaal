@@ -31,7 +31,7 @@ const factsByMode = {
     ]
   },
   mentor: {
-    title: "Ramadan-feitjes (docent/ouder)",
+    title: "Ramadan-feitjes (ouder-modus)",
     items: [
       "Vasten betekent onthouding van eten en drinken tussen ochtendschemering en zonsondergang.",
       "Suḥūr en ifṭār zijn niet alleen eetmomenten, maar ook leermomenten rond discipline en dankbaarheid.",
@@ -1040,7 +1040,7 @@ function renderModeUI() {
   const mentorActive = currentMode === "mentor";
   modeKidBtn.classList.toggle("active", !mentorActive);
   modeMentorBtn.classList.toggle("active", mentorActive);
-  modeBadgeEl.textContent = mentorActive ? "Docent/Ouder-modus actief" : "Kind-modus actief";
+  modeBadgeEl.textContent = mentorActive ? "Ouder-modus actief" : "Kind-modus actief";
   mentorNoteCardEl.hidden = !mentorActive;
   mentorNoteEl.textContent = mentorActive
     ? "Gebruik de extra uitleg in feedback om door te vragen: wat betekent dit in het dagelijks leven van het kind?"
