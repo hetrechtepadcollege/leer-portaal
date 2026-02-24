@@ -30,8 +30,8 @@ const questions = [
         question: "Wat verbreekt het vasten?",
         answers: [
             { text: "A) Slapen", correct: false },
-            { text: "B) Eten of drinken terwijl je weet dat je vast", correct: true },
-            { text: "C) Douchen", correct: false }
+            { text: "B) Douchen", correct: false },
+            { text: "C) Eten of drinken terwijl je weet dat je vast", correct: true }
         ],
         uitleg: "Het vasten wordt verbroken wanneer iemand opzettelijk eet of drinkt terwijl hij of zij zich bewust is van het vasten. Handelingen zoals slapen of douchen hebben geen invloed op de geldigheid van het vasten. Als iemand echter per ongeluk eet of drinkt uit vergetelheid, dan blijft het vasten geldig."
     },
@@ -74,8 +74,8 @@ const questions = [
     {
         question: "Verbreekt eten of drinken uit vergetelheid je vasten?",
         answers: [
-            { text: "A) Ja", correct: false },
-            { text: "B) Nee", correct: true },
+            { text: "A) Nee", correct: true },
+            { text: "B) Ja", correct: false },
             { text: "C) Alleen bij drinken", correct: false }
         ],
         uitleg: "Wanneer je uit vergetelheid eet of drinkt terwijl je vast, wordt je vasten hierdoor niet verbroken. Zodra je je herinnert dat je vast, dien je direct te stoppen."
@@ -102,16 +102,16 @@ const questions = [
         question: "Wordt je vasten verbroken als je noodgedwongen braakt en het braaksel een mondvol of meer bedraagt?",
         answers: [
             { text: "A) Ja", correct: false },
-            { text: "B) Nee", correct: true },
-            { text: "C) Alleen als je daarna misselijk blijft", correct: false }
+            { text: "B) Alleen als je daarna misselijk blijft", correct: false },
+            { text: "C) Nee", correct: true }
         ],
         uitleg: "Wanneer je noodgedwongen moet braken, wordt je vasten niet verbroken, ook al bedraagt het braaksel een mondvol of minder. Alleen wanneer het braken opzettelijk wordt opgewekt en een mondvol of meer bedraagt, wordt je vasten hierdoor verbroken."
     },
     {
         question: "Verbreekt een injectie je vasten?",
         answers: [
-            { text: "A) Ja, omdat er iets in het lichaam wordt ingebracht", correct: false },
-            { text: "B) Nee, omdat het niet via een lichaamsopening naar binnen gaat", correct: true },
+            { text: "A) Nee, omdat het niet via een lichaamsopening naar binnen gaat", correct: true },
+            { text: "B) Ja, omdat er iets in het lichaam wordt ingebracht", correct: false },
             { text: "C) Ja, alleen als het een grote hoeveelheid is", correct: false }
         ],
         uitleg: "Een injectie verbreekt je vasten niet, omdat deze niet via een lichaamsopening naar binnen gaat. De sharia baseert haar oordelen op wat uiterlijk waarneembaar is."
@@ -121,7 +121,7 @@ const questions = [
         answers: [
             { text: "A) Het vasten blijft geldig", correct: false },
             { text: "B) Het vasten wordt verbroken", correct: true },
-            { text: "C) Alleen makrūh (afgekeurd)", correct: false }
+            { text: "C) Het vasten blijft geldig, maar word minder beloond", correct: false }
         ],
         uitleg: "Wanneer de menstruatie begint tijdens het vasten, wordt het vasten verbroken en dient deze dag later te worden ingehaald (qaḍā)."
     },
@@ -129,16 +129,16 @@ const questions = [
         question: "Wordt je vasten verbroken als er tijdens wuḍū (kleine wassing) water in je keel komt terwijl je weet dat je vast?",
         answers: [
             { text: "A) Nee", correct: false },
-            { text: "B) Ja", correct: true },
-            { text: "C) Alleen bij veel water", correct: false }
+            { text: "B) Alleen bij veel water", correct: false },
+            { text: "C) Ja", correct: true }
         ],
         uitleg: "Als er tijdens wuḍū water in je keel terechtkomt terwijl je weet dat je vast, wordt je vasten hierdoor verbroken en dien je deze dag in te halen (qaḍā). Boetedoening (kaffārah) is niet verplicht."
     },
     {
         question: "Verbreekt het doorslikken van slijm je vasten?",
         answers: [
-            { text: "A) Ja", correct: false },
-            { text: "B) Nee", correct: true },
+            { text: "A) Nee", correct: true },
+            { text: "B) Ja", correct: false },
             { text: "C) Alleen bij ziekte", correct: false }
         ],
         uitleg: "Het doorslikken van slijm verbreekt je vasten niet, zolang het niet eerst wordt uitgespuugd en daarna weer ingeslikt."
@@ -147,16 +147,16 @@ const questions = [
         question: "Wat is makrūh (afgekeurd) tijdens het vasten?",
         answers: [
             { text: "A) Slapen", correct: false },
-            { text: "B) Iets proeven zonder reden", correct: true },
-            { text: "C) Bidden", correct: false }
+            { text: "B) Bidden", correct: false },
+            { text: "C) Iets proeven zonder reden", correct: true }
         ],
         uitleg: "Met proeven wordt hier niet bedoeld dat je een hap neemt en deze doorslikt. Het gaat erom dat je bijvoorbeeld met het puntje van je tong iets proeft en dit daarna weer uitspuugt zonder het door te slikken. Hoewel het vasten hierdoor niet wordt verbroken, is dit zonder een geldige reden makrūh (afgekeurd)."
     },
     {
         question: "Wanneer mag een zieke het vasten laten?",
         answers: [
-            { text: "A) Als hij geen zin heeft", correct: false },
-            { text: "B) Als het vasten zijn ziekte kan verergeren", correct: true },
+            { text: "A) Als het vasten zijn ziekte kan verergeren", correct: true },
+            { text: "B) Als hij geen zin heeft", correct: false },
             { text: "C) Als hij moe is", correct: false }
         ],
         uitleg: "Een zieke mag het vasten laten wanneer er gegronde vrees is dat het vasten zijn ziekte zal verergeren of het herstel zal vertragen. Deze dagen dienen later te worden ingehaald (qaḍā)."
@@ -165,16 +165,16 @@ const questions = [
         question: "Mag iemand fidyah (compensatie) geven als hij nooit meer kan vasten?",
         answers: [
             { text: "A) Nee", correct: false },
-            { text: "B) Ja", correct: true },
-            { text: "C) Alleen bij ziekte", correct: false }
+            { text: "B) Alleen bij ziekte", correct: false },
+            { text: "C) Ja", correct: true }
         ],
         uitleg: "Iemand die nooit meer in staat is om te vasten, zoals een zeer oude en zwakke persoon (shaykh fānī), mag fidyah (compensatie) geven voor elke gemiste vastendag."
     },
     {
         question: "Mag een reiziger het vasten laten tijdens Ramadan?",
         answers: [
-            { text: "A) Nee", correct: false },
-            { text: "B) Ja", correct: true },
+            { text: "A) Ja", correct: true },
+            { text: "B) Nee", correct: false },
             { text: "C) Alleen 's nachts", correct: false }
         ],
         uitleg: "Een reiziger mag het vasten laten, mits de vasten van de Ramadan voor hem verplicht is geworden terwijl hij zich al in de staat van reis (safar) bevond. Als het vasten voor hem verplicht werd terwijl hij nog geen reiziger was en hij daarna op reis gaat, dan dient hij die dag te vasten."
