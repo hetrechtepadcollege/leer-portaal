@@ -101,6 +101,10 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
+.grid + .facts {
+  margin-top: 16px;
+}
+
 .card {
   background: var(--card);
   border-radius: 20px;
