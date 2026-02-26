@@ -509,6 +509,11 @@ h1 {
   filter: brightness(1.07);
 }
 
+.cta-btn-undo {
+  margin-top: 0.5rem;
+  background: linear-gradient(120deg, #7e8794, #646d7a);
+}
+
 @keyframes tilePulse {
   0% {
     transform: translateY(0) scale(1);

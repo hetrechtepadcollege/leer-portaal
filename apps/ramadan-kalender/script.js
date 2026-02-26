@@ -10,6 +10,7 @@ const gridEl = document.getElementById("calendar-grid");
 const dialogEl = document.getElementById("message-dialog");
 const closeDialogBtn = document.getElementById("close-dialog");
 const ctaBtn = document.getElementById("cta-btn");
+const undoBtn = document.getElementById("undo-btn");
 const dialogDayEl = document.getElementById("dialog-day");
 const dialogTitleEl = document.getElementById("dialog-title");
 const dialogMessageEl = document.getElementById("dialog-message");
@@ -58,6 +59,13 @@ function renderProgress() {
   const done = [...completedDays].filter((day) => day <= currentDay).length;
   progressTextEl.textContent = `${done} van ${TOTAL_DAYS} goede daden afgevinkt`;
   progressBarEl.style.width = `${(done / TOTAL_DAYS) * 100}%`;
+}
+
+function updateDialogSelectionState(day) {
+  const isDone = completedDays.has(day);
+  ctaBtn.textContent = isDone ? "Deze daad is al afgevinkt" : "Ik ga dit vandaag doen";
+  ctaBtn.disabled = isDone;
+  undoBtn.hidden = !isDone;
 }
 
 function normalizeMessage(item, index) {
@@ -124,8 +132,7 @@ function openDoor(day) {
   dialogDayEl.textContent = `Dag ${day} van Ramadan`;
   dialogTitleEl.textContent = message.daad;
   dialogMessageEl.textContent = message.toelichting;
-  ctaBtn.textContent = completedDays.has(day) ? "Deze daad is al afgevinkt" : "Ik ga dit vandaag doen";
-  ctaBtn.disabled = completedDays.has(day);
+  updateDialogSelectionState(day);
   activeDay = day;
 
   saveState();
@@ -231,8 +238,24 @@ ctaBtn.addEventListener("click", () => {
 
   saveState();
   renderProgress();
-  ctaBtn.textContent = "Deze daad is al afgevinkt";
-  ctaBtn.disabled = true;
+  updateDialogSelectionState(activeDay);
+});
+
+undoBtn.addEventListener("click", () => {
+  if (!activeDay || !completedDays.has(activeDay)) return;
+  completedDays.delete(activeDay);
+  trackEvent("ramadan-kalender/daad-ongedaan", `Daad dag ${activeDay} ongedaan gemaakt`);
+
+  const tile = gridEl.querySelector(`[data-day="${activeDay}"]`);
+  if (tile) {
+    tile.classList.remove("done");
+    const textEl = tile.querySelector(".inside-message span");
+    if (textEl) textEl.textContent = "Open deur";
+  }
+
+  saveState();
+  renderProgress();
+  updateDialogSelectionState(activeDay);
 });
 
 async function init() {
