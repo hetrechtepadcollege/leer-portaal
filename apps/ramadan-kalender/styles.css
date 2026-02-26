@@ -569,6 +569,8 @@ h1 {
   }
 
   .minaret {
+    position: relative;
+    z-index: 1;
     padding-top: 2.8rem;
     grid-template-columns: repeat(5, minmax(72px, 1fr));
     border-radius: 18px;
@@ -580,6 +582,9 @@ h1 {
   }
 
   .mosque-body {
+    position: relative;
+    z-index: 2;
+    margin-top: 1.15rem;
     padding-top: 4rem;
   }
 
