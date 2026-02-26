@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Een reis door de Sīrah van de Profeet ﷺ - Het Rechte Pad College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero card">
+        <img class="logo" src="../../images/HRPC-logo.png" alt="Het Rechte Pad College logo" />
+        <h1>Een reis door de Sīrah van de Profeet ﷺ</h1>
+        <p class="hero-tagline">Ontdek en volg zijn gezegende levensloop</p>
+        <p>Doorloop de gebeurtenissen, test je kennis en verdiep je in de levensloop van de Profeet ﷺ</p>
+        <div class="stats">
+          <div class="stat"><span>⭐ Punten</span><strong id="score">0</strong></div>
+          <div class="stat"><span>🏆 Niveau</span><strong id="level">Starter</strong></div>
+          <div class="stat"><span>📚 Onderdeel</span><strong id="moduleCount">0/3</strong></div>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Tijdlijn van de Sīrah</h2>
+        <p class="hint">Kies een fase vóór of uit het leven van de Profeet ﷺ en lees een beknopte beschrijving van deze fase.</p>
+        <div class="filter-group">
+          <button id="filterAllBtn" class="btn active" type="button">Alles</button>
+          <button id="filterBeforeBirthBtn" class="btn secondary" type="button">Voor de geboorte van de Profeet ﷺ</button>
+          <button id="filterLifeBtn" class="btn secondary" type="button">In het leven van de Profeet ﷺ</button>
+        </div>
+        <p id="phaseDescription" class="phase-description"></p>
+        <div id="timelineList" class="timeline-list"></div>
+        <p id="subphaseDescription" class="subphase-description"></p>
+      </section>
+
+      <section class="card">
+        <h2>Spel 1: Zet op volgorde (voor de geboorte)</h2>
+        <p class="hint">Gebruik de knoppen om de gebeurtenissen chronologisch te zetten.</p>
+        <ul id="orderBeforeBirthList" class="order-list"></ul>
+        <div class="actions">
+          <button id="checkBeforeBirthBtn" class="btn">Controleer</button>
+          <button id="shuffleBeforeBirthBtn" class="btn secondary">Hussel opnieuw</button>
+        </div>
+        <p id="beforeBirthFeedback" class="feedback"></p>
+      </section>
+
+      <section class="card">
+        <h2>Spel 2: Zet op volgorde (levensloop)</h2>
+        <p class="hint">Zet de grote mijlpalen van de sira op de juiste volgorde.</p>
+        <ul id="orderLifeList" class="order-list"></ul>
+        <div class="actions">
+          <button id="checkLifeBtn" class="btn">Controleer</button>
+          <button id="shuffleLifeBtn" class="btn secondary">Hussel opnieuw</button>
+        </div>
+        <p id="lifeFeedback" class="feedback"></p>
+      </section>
+
+      <section class="card">
+        <h2>Spel 3: Sira Quiz</h2>
+        <p id="quizQuestion"></p>
+        <div id="quizOptions" class="options"></div>
+        <p id="quizFeedback" class="feedback"></p>
+        <button id="nextQuizBtn" class="btn secondary">Volgende vraag</button>
+      </section>
+
+    </main>
+
+    <script src="./script.js"></script>
+    <script data-goatcounter="https://hetrechtepadcollege.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
