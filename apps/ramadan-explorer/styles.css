@@ -329,3 +329,14 @@ h1 {
     flex-direction: column;
   }
 }
+
+.portal-home-wrap {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.portal-home-btn {
+  display: inline-block;
+  text-decoration: none;
+  min-width: 260px;
+}

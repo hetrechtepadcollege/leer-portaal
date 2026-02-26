@@ -36,3 +36,29 @@ function trackEvent(path, title) {
   - `koran-app/dag-afgerond`
   - `ramadan-explorer/snelheidsronde-afgerond`
   - `ramadan-quiz/quiz-voltooid`
+
+## 5) Standaard portal-terugknop (verplicht)
+
+Plaats onderaan elke app (in `index.html`) een vaste knop naar het portaal:
+
+```html
+<div class="portal-home-wrap">
+  <a class="portal-home-btn" href="https://leer.hetrechtepadcollege.nl/">
+    Terug naar leerportaal
+  </a>
+</div>
+```
+
+Voeg in de app-stylesheet (`style.css` of `styles.css`) minimaal dit toe:
+
+```css
+.portal-home-wrap {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.portal-home-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+```
