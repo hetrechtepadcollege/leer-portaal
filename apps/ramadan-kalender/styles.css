@@ -551,6 +551,18 @@ h1 {
     gap: 1rem;
   }
 
+  .minaret-left {
+    order: 1;
+  }
+
+  .minaret-right {
+    order: 2;
+  }
+
+  .mosque-body {
+    order: 3;
+  }
+
   .minaret {
     padding-top: 2.8rem;
     grid-template-columns: repeat(5, minmax(72px, 1fr));
