@@ -309,3 +309,15 @@ margin-top: 5px !important;
     background-color: #128C7E !important;
     transform: scale(1.02);
 }
+
+.portal-home-wrap {
+    width: 90%;
+    max-width: 600px;
+    margin: 8px auto 24px;
+}
+
+.portal-home-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
