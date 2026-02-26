@@ -79,24 +79,6 @@ body {
     align-items: center;
 }
 
-.moon-box {
-    position: fixed;
-    top: 20px;
-    right: 16px;
-    z-index: 5;
-    pointer-events: none;
-    display: block !important;
-    font-size: 64px !important;
-    margin: 0 !important;
-    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.75));
-    animation: floating 6s ease-in-out infinite;
-}
-
-@keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-}
-
 h1 {
 display: block !important;
 color: #ffffff !important;
@@ -268,14 +250,6 @@ margin: 6px 0 8px 0 !important;
 .animate-character {
     display: block; /* Maak zichtbaar */
     animation: popIn 0.6s ease-out forwards;
-}
-
-@media (max-width: 768px) {
-    .moon-box {
-        top: 14px;
-        right: 10px;
-        font-size: 52px !important;
-    }
 }
 
 /* Animatie voor een goed antwoord: een vrolijk sprongetje */
