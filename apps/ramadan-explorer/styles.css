@@ -32,6 +32,8 @@ body {
     radial-gradient(circle at 92% 24%, rgba(255, 239, 170, 0.16) 0 2px, transparent 3px),
     linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 48%, var(--bg-bottom) 100%);
   overflow-x: hidden;
+  line-height: 1.52;
+  font-size: 16px;
 }
 
 .sky-glow {
@@ -62,7 +64,7 @@ body {
   border: 2px solid #ffe2b4;
   border-radius: 24px;
   padding: 24px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 14px 28px rgba(7, 41, 63, 0.2);
   animation: floatIn 700ms ease-out;
 }
 
@@ -86,18 +88,27 @@ h1,
 h2 {
   margin-top: 0;
   font-family: "Baloo 2", cursive;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1;
+  margin-bottom: 8px;
+  font-size: clamp(2.1rem, 4vw, 3.05rem);
+  line-height: 1.04;
+  color: #102c4f;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.28rem, 2.2vw, 1.56rem);
+  line-height: 1.14;
+  color: #14365b;
 }
 
 .grid {
   margin-top: 20px;
   display: grid;
-  gap: 16px;
+  gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
@@ -108,10 +119,31 @@ h1 {
 .card {
   background: var(--card);
   border-radius: 20px;
-  border: 2px solid #f9dfb3;
-  padding: 16px;
-  box-shadow: var(--shadow);
+  border: 2px solid #f2d6a3;
+  padding: 18px;
+  box-shadow: 0 10px 22px rgba(7, 41, 63, 0.14);
   animation: rise 600ms ease;
+}
+
+.hero p {
+  margin-top: 0;
+  margin-bottom: 10px;
+  max-width: 72ch;
+  color: #1f3f63;
+  font-size: 1rem;
+}
+
+.card p,
+.card li,
+.order-item span,
+.mode-badge,
+.scoreboard span {
+  font-size: 0.98rem;
+  line-height: 1.52;
+}
+
+.card p {
+  margin-top: 0;
 }
 
 .scoreboard {
@@ -158,6 +190,7 @@ h1 {
 .options {
   display: grid;
   gap: 10px;
+  margin-top: 10px;
 }
 
 .btn,
@@ -165,18 +198,21 @@ h1 {
   font-family: inherit;
   background: linear-gradient(120deg, #0d2b4f, #133b69);
   color: #f7f3e7;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 10px 12px;
   font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.35;
   cursor: pointer;
-  transition: transform 180ms ease, filter 180ms ease;
+  transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
 }
 
 .btn:hover,
 .option-btn:hover {
   transform: translateY(-2px);
   filter: brightness(1.05);
+  box-shadow: 0 8px 16px rgba(13, 43, 79, 0.28);
 }
 
 .btn.secondary {
@@ -186,8 +222,10 @@ h1 {
 
 .feedback {
   min-height: 24px;
-  margin: 10px 0;
+  margin: 10px 0 0;
   font-weight: 700;
+  font-size: 0.94rem;
+  line-height: 1.4;
 }
 
 .feedback.good {
@@ -238,19 +276,37 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  border: 2px solid #ffdba8;
+  background: #fffdfa;
+  border: 2px solid #f3d4a0;
   border-radius: 12px;
   padding: 10px;
   font-weight: 700;
+  gap: 10px;
 }
 
 .order-item .move {
-  background: #ecf8ff;
-  border: 1px solid #9fc6dd;
-  border-radius: 8px;
-  padding: 4px 8px;
+  background: linear-gradient(120deg, #0d2b4f, #133b69);
+  color: #f7f3e7;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-family: inherit;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
+}
+
+.order-item .move:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 14px rgba(13, 43, 79, 0.24);
+}
+
+.order-item .move:disabled {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
 }
 
 .order-actions {
@@ -268,6 +324,7 @@ h1 {
   display: flex;
   gap: 16px;
   font-weight: 700;
+  font-size: 0.96rem;
 }
 
 .speed-track {
@@ -286,8 +343,9 @@ h1 {
 }
 
 .facts ul {
-  margin: 0;
-  padding-left: 18px;
+  margin: 2px 0 0;
+  padding-left: 20px;
+  line-height: 1.55;
 }
 
 @keyframes floatIn {
@@ -323,6 +381,22 @@ h1 {
 
   .app {
     padding: 14px;
+  }
+
+  h1 {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+  }
+
+  h2 {
+    font-size: clamp(1.16rem, 5.8vw, 1.34rem);
+  }
+
+  .card p,
+  .card li,
+  .order-item span,
+  .mode-badge,
+  .scoreboard span {
+    font-size: 0.95rem;
   }
 
   .order-actions {
