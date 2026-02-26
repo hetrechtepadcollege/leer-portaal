@@ -632,3 +632,14 @@ textarea {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.portal-home-wrap {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.portal-home-btn {
+  display: inline-block;
+  text-decoration: none;
+  min-width: 260px;
+}
