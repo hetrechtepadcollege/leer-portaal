@@ -1,0 +1,450 @@
+:root {
+    --bg-light: #f8f2e8;
+    --bg-mid: #ece1cd;
+    --ink: #1f2a2c;
+    --accent: #ad7c3f;
+    --accent-deep: #7f5522;
+    --card: #fff9ef;
+    --line: #c7a46c;
+    --hrpc-navy: #1f294d;
+    --hrpc-gold: #d4af37;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 10% 20%, rgba(173, 124, 63, 0.18), transparent 35%),
+        radial-gradient(circle at 90% 10%, rgba(127, 85, 34, 0.14), transparent 28%),
+        linear-gradient(180deg, var(--bg-light) 0%, var(--bg-mid) 100%);
+    min-height: 100vh;
+}
+
+/* ── Nav ─────────────────────────────────────────────────────────────────── */
+.portal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #1f294d 0%, #16203e 100%);
+    border-bottom: 2px solid var(--hrpc-gold);
+    box-shadow: 0 8px 20px rgba(10, 17, 36, 0.35);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.nav-logo {
+    max-height: 54px;
+}
+
+.nav-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: #f7e2a4;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ── Page layout ─────────────────────────────────────────────────────────── */
+.page-shell {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 22px 48px;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.hero {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-deep);
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    margin: 10px 0 8px;
+    color: var(--ink);
+}
+
+.subtext {
+    max-width: 680px;
+    margin: 0 auto;
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+/* ── Jump buttons ────────────────────────────────────────────────────────── */
+.jump-section {
+    margin-bottom: 32px;
+    background: rgba(255, 249, 239, 0.75);
+    border: 1px solid rgba(127, 85, 34, 0.18);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.jump-label {
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--accent-deep);
+}
+
+.jump-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.jump-btn {
+    background: #f7e7cb;
+    color: var(--accent-deep);
+    border: 1px solid rgba(127, 85, 34, 0.2);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.jump-btn:hover {
+    background: #f0d5a8;
+    transform: translateY(-1px);
+}
+
+/* ── Vertical timeline ───────────────────────────────────────────────────── */
+.timeline-stage {
+    position: relative;
+}
+
+/* The vertical line, centered in the connector column */
+.timeline-line {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(
+        180deg,
+        rgba(173, 124, 63, 0) 0%,
+        var(--line) 5%,
+        var(--line) 95%,
+        rgba(173, 124, 63, 0) 100%
+    );
+    border-radius: 2px;
+}
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 60px;
+}
+
+/* ── Timeline item ───────────────────────────────────────────────────────── */
+.timeline-item {
+    display: grid;
+    grid-template-columns: 0 1fr;
+    gap: 0 18px;
+    padding: 0 0 28px;
+    animation: rise 0.5s ease both;
+    position: relative;
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Connector: the dot sitting on the vertical line */
+.connector {
+    position: absolute;
+    left: -46px;
+    top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid #fff3df;
+    box-shadow: 0 0 0 4px rgba(173, 124, 63, 0.32);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.timeline-item:hover .dot {
+    transform: scale(1.18);
+    background: var(--accent-deep);
+}
+
+/* ── Event card ──────────────────────────────────────────────────────────── */
+.event-card {
+    background: var(--card);
+    border: 1px solid rgba(127, 85, 34, 0.18);
+    border-radius: 16px;
+    padding: 18px 20px 20px;
+    box-shadow: 0 8px 22px rgba(60, 40, 16, 0.09);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.event-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 12px 28px rgba(60, 40, 16, 0.14);
+    border-color: rgba(127, 85, 34, 0.38);
+}
+
+.prophet-number {
+    margin: 0 0 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-deep);
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.arabic-heading {
+    margin: 0 0 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+    line-height: 1;
+    direction: rtl;
+}
+
+.event-title {
+    margin: 2px 0 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+}
+
+.event-period {
+    margin: 0 0 10px;
+    font-size: 0.83rem;
+    color: var(--accent-deep);
+    font-weight: 600;
+}
+
+.event-summary {
+    font-size: 0.93rem;
+    margin: 0 0 16px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.detail-btn {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.detail-btn:hover {
+    background: var(--accent-deep);
+    transform: translateY(-1px);
+}
+
+/* ── Modal ───────────────────────────────────────────────────────────────── */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(20, 14, 7, 0.72);
+    padding: 16px;
+    z-index: 60;
+}
+
+.modal-panel {
+    width: min(720px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff9ef;
+    border-radius: 20px;
+    padding: 24px 24px 28px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(20, 14, 7, 0.35);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 2rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: var(--accent-deep);
+    line-height: 1;
+    transition: color 0.15s ease;
+}
+
+.close:hover {
+    color: var(--ink);
+}
+
+.period-badge {
+    display: inline-block;
+    margin: 0 0 6px;
+    background: #f1dfc1;
+    color: #663d12;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 0.83rem;
+    font-weight: 700;
+}
+
+.arabic-name {
+    margin: 0 0 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    direction: rtl;
+}
+
+#modal-title {
+    margin: 4px 0 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+}
+
+.modal-description {
+    margin: 0 0 4px;
+    line-height: 1.7;
+    font-size: 0.97rem;
+}
+
+.media-block {
+    margin: 14px 0 0;
+}
+
+.media-block img,
+.media-block iframe {
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+}
+
+.media-block figcaption {
+    font-size: 0.82rem;
+    opacity: 0.75;
+    margin-top: 6px;
+}
+
+/* Quran refs */
+.quran-refs {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: #f5e8cc;
+    border-radius: 12px;
+    border: 1px solid rgba(127, 85, 34, 0.18);
+}
+
+.refs-label {
+    margin: 0 0 6px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.refs-list {
+    margin: 0;
+    padding-left: 18px;
+    list-style: disc;
+}
+
+.refs-list li {
+    font-size: 0.9rem;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+/* ── Portal home button ───────────────────────────────────────────────────── */
+.portal-home-wrap {
+    text-align: center;
+    margin: 12px auto 44px;
+    padding: 0 20px;
+}
+
+.portal-home-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #d4af37;
+    color: #001f3f;
+    font-weight: 700;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 1rem;
+    min-width: 240px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.portal-home-btn:hover {
+    background-color: #f1c40f;
+    transform: translateY(-1px);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .timeline-line {
+        left: 18px;
+    }
+
+    .timeline-container {
+        padding-left: 44px;
+    }
+
+    .connector {
+        left: -36px;
+    }
+
+    .dot {
+        width: 18px;
+        height: 18px;
+    }
+
+    .arabic-heading {
+        font-size: 1.25rem;
+    }
+
+    .event-title {
+        font-size: 1rem;
+    }
+
+    .jump-btn {
+        font-size: 0.78rem;
+        padding: 5px 10px;
+    }
+}
