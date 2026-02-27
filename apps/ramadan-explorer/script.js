@@ -309,7 +309,7 @@ function revealCard(index) {
     firstEl.classList.remove("revealed");
     firstPick = null;
     lockBoard = false;
-  }, 900);
+  }, 3000);
 }
 
 // Order game
