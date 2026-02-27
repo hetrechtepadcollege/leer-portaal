@@ -129,12 +129,13 @@ h1 {
 /* ── Vertical timeline ───────────────────────────────────────────────────── */
 .timeline-stage {
     position: relative;
+    padding-left: 70px; /* room for dot + gap before cards start */
 }
 
-/* The vertical line, centered in the connector column */
+/* The vertical line */
 .timeline-line {
     position: absolute;
-    left: 28px;
+    left: 26px; /* center of the line at ~28px */
     top: 0;
     bottom: 0;
     width: 4px;
@@ -151,18 +152,14 @@ h1 {
 .timeline-container {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    padding-left: 60px;
 }
 
 /* ── Timeline item ───────────────────────────────────────────────────────── */
 .timeline-item {
-    display: grid;
-    grid-template-columns: 0 1fr;
-    gap: 0 18px;
+    /* No grid — connector is absolute, card fills full width */
+    position: relative;
     padding: 0 0 28px;
     animation: rise 0.5s ease both;
-    position: relative;
 }
 
 @keyframes rise {
@@ -173,10 +170,11 @@ h1 {
 /* Connector: the dot sitting on the vertical line */
 .connector {
     position: absolute;
-    left: -46px;
+    /* item left = 70px from stage; line center = 28px; dot half = 11px
+       → connector left = 28 - 11 - 70 = -53px from item left */
+    left: -53px;
     top: 18px;
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -418,16 +416,22 @@ h1 {
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-    .timeline-line {
-        left: 18px;
+    .page-shell {
+        padding: 20px 12px 36px;
     }
 
-    .timeline-container {
-        padding-left: 44px;
+    .timeline-stage {
+        padding-left: 50px;
+    }
+
+    .timeline-line {
+        left: 18px; /* center at 20px */
     }
 
     .connector {
-        left: -36px;
+        /* item left = 50px; line center = 20px; dot half = 9px (18px dot)
+           → left = 20 - 9 - 50 = -39px */
+        left: -39px;
     }
 
     .dot {
