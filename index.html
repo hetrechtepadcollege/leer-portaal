@@ -4,61 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leerportaal - Het Rechte Pad College</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
-            --dark-blue: #001f3f;
-            --bg-color: #1f294d; /* Huisstijl van HRPC */
+            --gold-light: #e8c84a;
+            --gold-border: rgba(212, 175, 55, 0.28);
+            --navy: #001f3f;
+            --ink: #16324f;
+            --muted: #4b607a;
+            --shadow: 0 14px 30px rgba(7, 41, 63, 0.16);
+            --shadow-hover: 0 18px 34px rgba(7, 41, 63, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Fredoka', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--dark-blue);
+            font-family: 'Nunito', sans-serif;
+            background:
+                radial-gradient(circle at 10% 8%,  rgba(255, 236, 167, 0.10) 0 2px, transparent 3px),
+                radial-gradient(circle at 26% 5%,  rgba(255, 236, 167, 0.12) 0 1.5px, transparent 2.5px),
+                radial-gradient(circle at 48% 12%, rgba(255, 236, 167, 0.09) 0 1.5px, transparent 2.5px),
+                radial-gradient(circle at 70% 6%,  rgba(255, 236, 167, 0.11) 0 2px, transparent 3px),
+                radial-gradient(circle at 88% 10%, rgba(255, 236, 167, 0.10) 0 1.5px, transparent 2.5px),
+                linear-gradient(180deg, #081a33 0%, #0f2d50 50%, #0c2642 100%);
+            color: var(--ink);
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px 20px 56px;
         }
 
-        /* --- LOGO FIX START --- */
         .logo-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 40px 0 20px 0; /* Iets meer ruimte boven het logo */
-}
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 36px 0 16px;
+        }
 
         .site-logo {
             width: 100%;
-    max-width: 850px; /* Dit is ongeveer de breedte van de twee kaarten + gap */
-    height: auto;
-    display: block;
+            max-width: 800px;
+            height: auto;
+            display: block;
         }
 
         @media (max-width: 900px) {
-    .site-logo {
-        max-width: 90%; /* Op kleine schermen pakt hij 90% van de breedte */
-    }
-}
+            .site-logo {
+                max-width: 90%;
+            }
+        }
 
         h1 {
+            font-family: 'Cinzel', serif;
             color: var(--gold);
-            font-size: 2rem;
+            font-size: clamp(1.3rem, 3vw, 1.9rem);
             text-align: center;
-            margin-top: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            letter-spacing: 1.5px;
         }
 
         p.subtitle {
             margin-bottom: 40px;
-            font-size: 1.1rem;
+            font-size: 0.98rem;
+            line-height: 1.75;
             text-align: center;
-            color: white;
+            color: rgba(255, 255, 255, 0.65);
             max-width: 600px;
         }
 
@@ -67,101 +83,119 @@
             max-width: 980px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 28px;
+            gap: 24px;
             align-items: start;
         }
 
         .portal-columns + .portal-columns {
-            margin-top: 28px;
+            margin-top: 24px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 24px;
             width: 100%;
         }
 
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 14px;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
             text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
+            color: var(--ink);
+            transition: transform 200ms ease, box-shadow 200ms ease;
+            border: 1px solid var(--gold-border);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 285px;
+            min-height: 265px;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .emoji {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
         }
 
         .card h2 {
-            margin: 0 0 10px 0;
-            color: var(--dark-blue);
-            font-size: 1.4rem;
+            margin: 0 0 8px 0;
+            font-family: 'Cinzel', serif;
+            color: var(--navy);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.65;
         }
 
         .card-subtitle {
-            margin: -4px 0 10px 0;
-            color: var(--dark-blue);
-            font-size: 1rem;
+            margin: -2px 0 8px;
+            color: var(--muted);
+            font-size: 0.88rem;
             font-weight: 700;
         }
 
         .card-tag {
             display: inline-block;
-            background: rgba(0, 31, 63, 0.08);
-            color: var(--dark-blue);
-            border: 1px solid rgba(0, 31, 63, 0.18);
-            border-radius: 999px;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            background: rgba(212, 175, 55, 0.10);
+            color: #7a5f0a;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .play-btn {
-            background-color: var(--gold);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            margin-top: 20px;
-            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 18px;
+            font-size: 0.88rem;
+            letter-spacing: 0.3px;
             display: inline-block;
+            transition: background 180ms ease;
+        }
+
+        .card:hover .play-btn {
+            background: var(--gold-light);
         }
 
         .coming-soon {
-            opacity: 0.5;
+            opacity: 0.4;
             filter: grayscale(1);
             cursor: not-allowed;
         }
 
         footer {
-            color: white;
+            color: rgba(255, 255, 255, 0.45);
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            margin-top: 52px;
+            font-size: 0.85rem;
         }
 
         footer a {
-            color: white;
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: none;
         }
 
