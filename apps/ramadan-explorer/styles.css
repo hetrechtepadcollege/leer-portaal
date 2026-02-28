@@ -377,23 +377,24 @@ h1 {
 }
 
 .portal-home-btn {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  background: var(--gold);
-  color: #001f3f;
-  font-family: "Noto Sans", "Noto Naskh Arabic", sans-serif;
-  font-weight: 700;
-  padding: 12px 36px;
-  border-radius: 8px;
-  font-size: 1rem;
-  min-width: 240px;
-  transition: background 0.2s ease, transform 0.15s ease;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.10);
+    border: 1px solid var(--gold-border);
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
 .portal-home-btn:hover {
-  background: var(--gold-light);
-  transform: translateY(-1px);
+    color: var(--gold-light);
+    background: rgba(212, 175, 55, 0.18);
+    border-color: rgba(212, 175, 55, 0.45);
+    transform: translateY(-1px);
 }
 
 /* ── ANIMATIONS ─────────────────────────────────────── */

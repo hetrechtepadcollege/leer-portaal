@@ -12,9 +12,12 @@
     --gold-dim:   rgba(212, 175, 55, 0.22);
     --gold-glow:  rgba(212, 175, 55, 0.10);
     --navy:       #001427;
+    --bg:         #060d1b;
     --card-bg:    rgba(8, 20, 44, 0.82);
     --text:       #eef2ff;
     --text-muted: rgba(238, 242, 255, 0.52);
+    --correct:    #27ae60;
+    --wrong:      #c0392b;
     --radius:     16px;
 }
 
@@ -33,22 +36,16 @@ body {
     overflow-x: hidden;
 }
 
-/* === RAMADAN ACHTERGROND (MAAN + STERREN) === */
-.ramadan-bg {
+/* === MOSQUE SILHOUET (ACHTERGROND) === */
+.mosque-bg {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     width: 100%;
-    height: 100%;
     pointer-events: none;
     z-index: 0;
-}
-
-.ramadan-bg svg {
-    width: 100%;
-    height: 100%;
+    fill: rgba(212, 175, 55, 0.055);
 }
 
 /* === PAGE WRAPPER === */
@@ -123,7 +120,7 @@ body {
     justify-content: center;
     align-items: flex-end;
     height: 210px;
-    margin: 10px 0 16px;
+    margin: 10px 0 4px;
 }
 
 .character {
@@ -134,6 +131,28 @@ body {
     filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
     transform: scale(1.05);
     transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* === VRAAG META (BADGE + TELLER) === */
+.question-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 14px 0 12px;
+}
+
+.category-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(212, 175, 55, 0.10);
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    white-space: nowrap;
 }
 
 /* === VRAAG TEKST === */
