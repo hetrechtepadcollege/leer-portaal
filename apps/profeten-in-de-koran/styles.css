@@ -63,6 +63,12 @@ body {
     padding: 32px 22px 48px;
 }
 
+.top-brand {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
 /* ── Hero ────────────────────────────────────────────────────────────────── */
 .hero {
     display: grid;
@@ -168,7 +174,7 @@ h1 {
 
 .brand-logo {
     width: min(100%, 320px);
-    justify-self: end;
+    display: block;
     filter: drop-shadow(0 14px 30px rgba(60, 40, 16, 0.16));
 }
 
@@ -533,7 +539,6 @@ h1 {
     }
 
     .brand-logo {
-        justify-self: start;
         width: min(100%, 240px);
     }
 
