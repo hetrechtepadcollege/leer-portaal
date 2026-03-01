@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 1. Toon de hoofdboodschap in de titel
-    qTextElement.innerText = `Māshā Allāh! Je hebt de Ramadan Kennisquiz afgerond. 👍🏽`;
+    qTextElement.innerText = `Māshā Allāh! Je hebt de Kennisquiz Ramadan voor kids afgerond. 👍🏽`;
     
     // 2. Toon de score en de wens in de score-sectie
     scoreText.innerHTML = `Eindscore: ${score} van de ${questions.length}<br><br>

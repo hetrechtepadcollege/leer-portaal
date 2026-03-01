@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resetState();
         uitlegContainer.classList.add("hide");
         progressBar.style.width = "100%";
-        qTextElement.innerText = "Māshā Allāh! Je hebt de Ramadan Kennisquiz afgerond.";
+        qTextElement.innerText = "Māshā Allāh! Je hebt de Kennisquiz Ramadan afgerond.";
         scoreText.innerHTML = `Eindscore: ${score} van de ${questions.length}<br><br>Moge Allah jouw Ramadan vullen met kennis, begrip, geduld en veel goeds. Āmīn!`;
         resultContainer.classList.remove("hide");
         characterImg.src = "images/mw-happy.png";
