@@ -523,9 +523,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (btn.disabled) {
             return;
         }
+        const vraagNr = currentIdx + 1;
         trackEvent(
-            isCorrect ? "ramadan-intimiteit/antwoord-goed" : "ramadan-intimiteit/antwoord-fout",
-            isCorrect ? "Kennisquiz Ramadan Intimiteit antwoord goed" : "Kennisquiz Ramadan Intimiteit antwoord fout"
+            isCorrect
+                ? `ramadan-intimiteit/v${vraagNr}-goed`
+                : `ramadan-intimiteit/v${vraagNr}-fout`,
+            isCorrect
+                ? `Vraag ${vraagNr} goed beantwoord`
+                : `Vraag ${vraagNr} fout beantwoord`
         );
 
         const huidigeVraag = questions[currentIdx];
