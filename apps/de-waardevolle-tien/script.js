@@ -321,7 +321,7 @@ function updateProgress(d) {
     pct === 0   ? 'Begin vandaag — elke ʿibādah telt' :
     pct < 50    ? 'Goed bezig, ga door!' :
     pct < 100   ? 'Bijna voltooid, houd vol!' :
-                  'Masha\'Allah — dag voltooid! 🤲';
+                  'Māshā Allāh — uitstekend bezig! 💚';
 }
 
 // ─── Modal ────────────────────────────────────────────────────
