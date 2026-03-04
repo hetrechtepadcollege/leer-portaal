@@ -461,6 +461,7 @@ body::after {
   gap: 8px;
   margin-top: 14px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .prayer-check {
@@ -494,7 +495,7 @@ body::after {
 }
 
 .prayer-name {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--text-subtle);
   letter-spacing: 0.05em;
   text-align: center;
