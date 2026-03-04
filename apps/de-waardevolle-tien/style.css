@@ -1,0 +1,878 @@
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --night:        #f5f0e8;
+  --night-mid:    #ede7d9;
+  --night-card:   #ffffff;
+  --night-border: rgba(0,0,0,0.08);
+  --gold:         #b8860b;
+  --gold-light:   #9a6f0a;
+  --gold-dim:     rgba(184,134,11,0.12);
+  --gold-glow:    rgba(184,134,11,0.06);
+  --text-primary: #1a1612;
+  --text-muted:   rgba(26,22,18,0.55);
+  --text-subtle:  rgba(26,22,18,0.35);
+  --success:      #2d7a3a;
+  --success-dim:  rgba(45,122,58,0.1);
+  --radius-sm:    10px;
+  --radius-md:    16px;
+  --radius-lg:    24px;
+  --transition:   0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── Reset & Base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--night);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ─── Background atmosphere ─────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184,134,11,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(184,134,11,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(184,134,11,0.1) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 20%, transparent 80%);
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.app-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 0 80px;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.app-header {
+  text-align: center;
+  padding: 48px 24px 32px;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.logo-wrap img {
+  height: 88px;
+  width: auto;
+  max-width: 280px;
+  object-fit: contain;
+}
+
+.logo-wrap img.broken { display: none; }
+
+.logo-wrap .logo-fallback {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.app-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 8vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.app-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.app-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0 auto 4px;
+  text-align: center;
+}
+
+.hadith-source {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-subtle);
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* ─── Ramadan dag badge ─────────────────────────────────────── */
+.ramadan-day-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 10px auto 0;
+}
+
+.ramadan-day-badge:empty { display: none; }
+
+/* ─── Countdown block ───────────────────────────────────────── */
+.countdown-block {
+  margin: 14px 0 0;
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.countdown-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.countdown-text.active { color: var(--gold); }
+
+.app-description {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Progress Ring ─────────────────────────────────────────── */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0 24px 32px;
+}
+
+.progress-ring-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.progress-ring { transform: rotate(-90deg); }
+
+.progress-ring-track {
+  fill: none;
+  stroke: var(--night-card);
+  stroke-width: 6;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke: url(#goldGradient);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.progress-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-percent {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.progress-label {
+  font-size: 10px;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+.progress-description {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ─── Day Navigation ────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  margin-bottom: 12px;
+}
+
+.section-label-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--gold-glow);
+  border: 1px solid rgba(184,134,11,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.section-label-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.day-nav {
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
+
+.day-nav-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-flow: row dense;
+  gap: 8px;
+}
+
+.day-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--night-border);
+  background: var(--night-card);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.day-btn:hover {
+  border-color: rgba(184,134,11,0.4);
+  background: rgba(184,134,11,0.05);
+}
+
+.day-btn.active {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.day-btn.completed::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.day-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.day-btn.active .day-date { color: var(--gold); }
+
+.day-weekday {
+  font-size: 9px;
+  color: var(--text-subtle);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.day-btn.active .day-weekday { color: var(--gold); }
+
+.qadr-star {
+  font-size: 9px;
+  color: var(--gold);
+  margin-top: 1px;
+}
+
+/* ─── Current day header ────────────────────────────────────── */
+.current-day-header {
+  padding: 16px 24px 0;
+  margin-bottom: 16px;
+}
+
+.current-day-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.current-day-title .qadr-badge {
+  font-size: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid rgba(184,134,11,0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.current-day-title .qadr-badge:hover { background: rgba(184,134,11,0.2); }
+
+/* ─── Cards (ibadah items) ──────────────────────────────────── */
+.cards-section {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ibadah-card {
+  background: var(--night-card);
+  border: 1px solid var(--night-border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.ibadah-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  opacity: 0;
+  transition: var(--transition);
+  border-radius: 0 2px 2px 0;
+}
+
+.ibadah-card.done::before { opacity: 1; }
+
+.ibadah-card.done {
+  border-color: rgba(184,134,11,0.2);
+  background: linear-gradient(135deg, rgba(184,134,11,0.04) 0%, var(--night-card) 100%);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--gold-glow);
+  border: 1px solid rgba(184,134,11,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.ibadah-card.done .card-icon {
+  background: var(--gold-dim);
+  border-color: rgba(184,134,11,0.35);
+}
+
+.card-info { min-width: 0; }
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.card-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Prayer checkboxes ─────────────────────────────────────── */
+.prayers-grid {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 52px;
+}
+
+.prayer-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.prayer-check input { display: none; }
+
+.prayer-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid var(--night-border);
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 0.85rem;
+  color: transparent;
+}
+
+.prayer-check input:checked + .prayer-box {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.prayer-name {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.prayer-check input:checked ~ .prayer-name { color: var(--gold); }
+
+.prayers-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: auto;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* ─── Toggle ────────────────────────────────────────────────── */
+.toggle-btn {
+  width: 52px;
+  height: 28px;
+  border-radius: 99px;
+  border: 1.5px solid var(--night-border);
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  transition: var(--transition);
+  flex-shrink: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.toggle-btn::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-subtle);
+  transition: var(--transition);
+}
+
+.toggle-btn:checked {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+}
+
+.toggle-btn:checked::after {
+  left: calc(100% - 21px);
+  background: var(--gold-light);
+}
+
+/* ─── Stepper (Koran) ───────────────────────────────────────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--night-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.stepper-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.04);
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper-btn:hover { background: var(--gold-dim); color: var(--gold); }
+.stepper-btn:active { transform: scale(0.92); }
+
+.stepper-value {
+  min-width: 44px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.02);
+  padding: 0 4px;
+  line-height: 36px;
+}
+
+/* ─── Extra ibadah ──────────────────────────────────────────── */
+.extra-list {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.extra-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.extra-item input { display: none; }
+
+.extra-check-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1.5px solid var(--night-border);
+  background: transparent;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 0.7rem;
+  color: transparent;
+}
+
+.extra-item input:checked + .extra-check-box {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.extra-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.extra-item input:checked ~ .extra-label { color: var(--text-primary); }
+
+/* ─── Bottom CTA ────────────────────────────────────────────── */
+.cta-section { padding: 24px 16px 0; }
+
+.save-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(184,134,11,0.4);
+  background: linear-gradient(135deg, rgba(184,134,11,0.12) 0%, rgba(184,134,11,0.06) 100%);
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.save-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(184,134,11,0.18) 0%, rgba(184,134,11,0.1) 100%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.save-btn:hover::before { opacity: 1; }
+.save-btn:active { transform: scale(0.98); }
+
+/* ─── Footer ────────────────────────────────────────────────── */
+.app-footer {
+  padding: 32px 24px 16px;
+  text-align: center;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.back-link:hover { color: var(--text-muted); }
+
+/* ─── Modal ─────────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border-top: 1px solid rgba(184,134,11,0.2);
+  padding: 32px 24px 48px;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+
+.modal-backdrop.open .modal { transform: translateY(0); }
+
+.modal-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(0,0,0,0.12);
+  margin: 0 auto 24px;
+}
+
+.modal-star {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.modal-arabic {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--gold);
+  direction: rtl;
+  margin-bottom: 16px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.modal-verse {
+  background: var(--gold-glow);
+  border: 1px solid rgba(184,134,11,0.15);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.modal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.modal-list li span:first-child { font-size: 1.1rem; }
+
+.modal-dua {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.modal-dua .arabic-text {
+  font-size: 1.15rem;
+  direction: rtl;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.modal-dua .transliteration {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.modal-dua .translation {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.modal-close {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(184,134,11,0.3);
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-close:hover { background: rgba(184,134,11,0.2); }
+
+/* ─── Toast ─────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: #edfaef;
+  border: 1px solid rgba(45,122,58,0.25);
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  color: var(--success);
+  white-space: nowrap;
+  z-index: 1100;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events: none;
+}
+
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ─── Animations ────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.app-header         { animation: fadeUp 0.6s ease both; }
+.progress-section   { animation: fadeUp 0.6s 0.1s ease both; }
+.day-nav            { animation: fadeUp 0.6s 0.15s ease both; }
+.current-day-header { animation: fadeUp 0.6s 0.2s ease both; }
+.cards-section      { animation: fadeUp 0.6s 0.25s ease both; }
+.cta-section        { animation: fadeUp 0.6s 0.3s ease both; }
+
+/* ─── Focus visible ─────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
