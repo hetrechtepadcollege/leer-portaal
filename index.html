@@ -106,6 +106,26 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 265px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-ribbon {
+            position: absolute;
+            top: 18px;
+            right: -26px;
+            width: 100px;
+            background: #1a7a45;
+            color: #ffffff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 5px 0;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+            pointer-events: none;
         }
 
         .card:hover {
@@ -258,7 +278,8 @@
     <div class="portal-grid">
         <a href="apps/ramadan-explorer/" class="card">
             <div>
-                <span class="card-tag">Kinderen</span><span class="card-tag-update">↑ Bijgewerkt</span>
+                <span class="card-ribbon">Update</span>
+                <span class="card-tag">Kinderen</span>
                 <div class="emoji">🧭</div>
                 <h2>Ramadan Explorer</h2>
                 <p>Ontdek de Ramadan met spellen, weetjes en uitdagingen. Verzamel sterren en groei stap voor stap.</p>
