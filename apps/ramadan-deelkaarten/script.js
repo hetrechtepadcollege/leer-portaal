@@ -422,7 +422,7 @@ function tekenKaartCanvas(nacht) {
     ctx.fillStyle = GOUD;
     ctx.font = '500 21px "Noto Sans", sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('✦ Mogelijke Laylatul Qadr ✦', W / 2, headerY + 29);
+    ctx.fillText('✦ Mogelijk Laylatul Qadr ✦', W / 2, headerY + 29);
     headerY += 60;
   }
 
@@ -431,7 +431,7 @@ function tekenKaartCanvas(nacht) {
   ctx.font = `bold 78px "Cinzel Decorative", "Cinzel", serif`;
   ctx.textAlign = 'center';
   ctx.fillText(`Nacht ${nacht.nacht}`, W / 2, headerY + 75);
-  headerY += 95;
+  headerY += 120;
 
   // — Thema
   ctx.fillStyle = GOUD_LICHT;
@@ -495,10 +495,10 @@ function tekenKaartCanvas(nacht) {
   ctx.strokeStyle = `rgba(200,169,110,0.2)`;
   ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(PAD, footerY - 20); ctx.lineTo(W - PAD, footerY - 20); ctx.stroke();
-  ctx.fillStyle = `rgba(200,169,110,0.5)`;
+  ctx.fillStyle = `rgb(255, 255, 255)`;
   ctx.font = '400 26px "Noto Sans", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('Het Rechte Pad College Leerportaal', W / 2, footerY);
+  ctx.fillText('Het Rechte Pad College', W / 2, footerY);
 
   return canvas.toDataURL('image/png');
 }
