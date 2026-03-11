@@ -278,7 +278,7 @@ function getNachtStatus() {
   const nu = new Date();
   const nacht21Start = parseLocalDatum(RAMADAN_START_STR);
   nacht21Start.setDate(nacht21Start.getDate() + 19);
-  nacht21Start.setHours(19, 0, 0, 0); // kaart zichtbaar vanaf 19:00 (na Maghrib)
+  nacht21Start.setHours(18, 0, 0, 0); // kaart zichtbaar vanaf 18:00 (na Maghrib)
   const diff = Math.floor((nu - nacht21Start) / MS_PER_DAG);
   if (diff < 0) return -1;
   if (diff > 9) return 10;
