@@ -148,7 +148,7 @@ const NACHTEN = [
       arabisch: 'اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ',
       transliteratie: "Allāhumma aʿinnī ʿalā dzikrika wa-shukrika wa-ḥusni ʿibādatik",
       betekenis: '"O Allah, help mij U te gedenken, U dankbaar te zijn en U te aanbidden op de beste wijze."',
-      bron: 'Abu Dawud & Nasa'i'
+      bron: 'Abu Dawud & Nasaʾi'
     },
     dzikr: {
       arabisch: 'الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ',
