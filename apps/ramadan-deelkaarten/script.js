@@ -292,7 +292,7 @@ function renderKaart(index) {
 
   document.getElementById('nacht-nummer').textContent = `Nacht ${nacht.nacht}`;
   document.getElementById('nacht-thema').textContent = nacht.thema;
-  document.getElementById('qadr-badge').hidden = !nacht.oneven;
+  document.getElementById('qadr-badge').hidden = false;
 
   document.getElementById('vers-arabisch').textContent = nacht.vers.arabisch;
   document.getElementById('vers-referentie').textContent = nacht.vers.referentie;
