@@ -86,16 +86,16 @@ const NACHTEN = [
     vers: {
       arabisch: 'قُمِ اللَّيْلَ إِلَّا قَلِيلًا ۝ نِّصْفَهُ أَوِ انقُصْ مِنْهُ قَلِيلًا ۝ أَوْ زِدْ عَلَيْهِ وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا',
       referentie: 'Al-Muzzammil 73:2-4',
-      vertaling: '"Sta op in de nacht, behalve een weinig. De helft ervan, of verminder er een weinig van, of voeg er iets aan toe. En reciteer de Koran op duidelijke, nadrukkelijke wijze."'
+      vertaling: '"Blijf de nacht overeind, behalve een klein deel: de helft ervan of trek er een klein deel van af, of voeg er iets aan toe en draag de Koran voor met een duidelijke voordracht."'
     },
     hadith: {
-      tekst: '"Wie in Ramadan staat (in nachtgebed) vanuit geloof en met de verwachting van beloning, zijn eerder begane zonden worden hem vergeven."',
+      tekst: '"Wie met geloof in aanbidding staat tijdens de maand Ramadan en daarbij streeft naar de beloning van Allah, zal zien dat zijn eerdere zonden vergeven worden."',
       bron: 'Sahih Bukhari & Sahih Muslim'
     },
     dua: {
       arabisch: 'رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ',
       transliteratie: "Rabbij-ʿalnī muqīmaṣ-ṣalāti wa-min dhurriyyatī, rabbanā wa-taqabbal duʿāʾ",
-      betekenis: '"Mijn Heer, maak mij een onderhoudende van het gebed en ook uit mijn nageslacht. Onze Heer, en aanvaard mijn smeekbede."',
+      betekenis: '"Mijn Heer, maak dat ik het gebed onderhoud en ook een deel van mijn nakomelingen. Onze Heer, aanvaard mijn gebed."',
       bron: 'Ibrahim 14:40'
     },
     dzikr: {
@@ -115,7 +115,7 @@ const NACHTEN = [
       vertaling: '"En bid een deel van de nacht als vrijwillig gebed. Wellicht zal uw Heer u naar een geprezen positie (op de Dag des Oordeels) verheffen."'
     },
     hadith: {
-      tekst: '"Op de ochtend na Laylatul Qadr gaat de zon op wit, zonder (stralende) stralen, als een schijf."',
+      tekst: '"...het teken daarvan is dat op die dag de zon helder opkomt zonder stralen."',
       bron: 'Sahih Muslim'
     },
     dua: {
@@ -136,9 +136,9 @@ const NACHTEN = [
     oneven: false,
     thema: 'Dankbaarheid',
     vers: {
-      arabisch: 'وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ ۖ وَلَئِن كَفَرْتُمْ إِنَّ عَذَابِي لَشَدِيدٌ',
+      arabisch: 'وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ',
       referentie: 'Ibrahim 14:7',
-      vertaling: '"En (gedenk) toen uw Heer aankondigde: Als jullie dankbaar zijn, zal Ik jullie zeker meer geven. Maar als jullie ondankbaar zijn, dan is Mijn bestraffing inderdaad zwaar."'
+      vertaling: '"En (gedenk) toen jullie Heer aankondigde: Als jullie dankbaar zijn, zal Ik jullie zeker meer geven."'
     },
     hadith: {
       tekst: '"Wie niet dankbaar is voor het weinige, zal ook niet dankbaar zijn voor het veel. En wie niet dankbaar is jegens mensen, is niet dankbaar jegens Allah."',
@@ -147,7 +147,7 @@ const NACHTEN = [
     dua: {
       arabisch: 'اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ',
       transliteratie: "Allāhumma aʿinnī ʿalā dzikrika wa-shukrika wa-ḥusni ʿibādatik",
-      betekenis: '"O Allah, help mij U te gedenken, U dankbaar te zijn en U op de schoonste wijze te aanbidden."',
+      betekenis: '"O Allah, help mij U te gedenken, U dankbaar te zijn en U te aanbidden op de beste wijze."',
       bron: 'Abu Dawud & Nasai'
     },
     dzikr: {
