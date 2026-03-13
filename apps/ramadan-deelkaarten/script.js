@@ -89,7 +89,7 @@ const NACHTEN = [
       vertaling: '"Blijf de nacht overeind, behalve een klein deel: de helft ervan of trek er een klein deel van af, of voeg er iets aan toe en draag de Koran voor met een duidelijke voordracht."'
     },
     hadith: {
-      tekst: '"Wie in de nacht van Laylatul Qadr staat in gebed, met oprecht geloof en met om goede daden te verrichten, voor hem worden de zonden die hij eerder heeft begaan vergeven."',
+      tekst: '"Wie in de nacht van Laylatul Qadr staat in gebed, met oprecht geloof en om goede daden te verrichten, voor hem worden de zonden die hij eerder heeft begaan vergeven."',
       bron: 'Sahih Bukhari'
     },
     dua: {
