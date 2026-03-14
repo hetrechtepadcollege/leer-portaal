@@ -279,6 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isCorrect ? 'ramadan-quiz-kids/antwoord-goed' : 'ramadan-quiz-kids/antwoord-fout',
             isCorrect ? 'Ramadan quiz kids antwoord goed' : 'Ramadan quiz kids antwoord fout'
         );
+        trackEvent(
+            isCorrect ? `ramadan-quiz-kids/v${currentIdx + 1}-goed` : `ramadan-quiz-kids/v${currentIdx + 1}-fout`,
+            isCorrect ? `Vraag ${currentIdx + 1} correct` : `Vraag ${currentIdx + 1} fout`
+        );
 
         if (isCorrect) {
             btn.classList.add('correct');

@@ -300,6 +300,10 @@ document.addEventListener("DOMContentLoaded", () => {
             isCorrect ? "ramadan-quiz-wel-niet/antwoord-goed" : "ramadan-quiz-wel-niet/antwoord-fout",
             isCorrect ? "Ramadan quiz antwoord goed" : "Ramadan quiz antwoord fout"
         );
+        trackEvent(
+            isCorrect ? `ramadan-quiz-wel-niet/v${currentIdx + 1}-goed` : `ramadan-quiz-wel-niet/v${currentIdx + 1}-fout`,
+            isCorrect ? `Vraag ${currentIdx + 1} correct` : `Vraag ${currentIdx + 1} fout`
+        );
 
         const huidigeVraag = questions[currentIdx];
 
