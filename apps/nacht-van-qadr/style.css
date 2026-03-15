@@ -1,0 +1,1004 @@
+/* ─── IndoPak Quran font ─────────────────────────────────────── */
+@font-face {
+  font-family: 'AlQalamQuranMajeed';
+  src: url('fonts/AlQalamQuranMajeed.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --bg-top:          #081a33;
+  --bg-mid:          #0f2d50;
+  --bg-bottom:       #0c2642;
+  --gold:            #d4af37;
+  --gold-light:      #e8c84a;
+  --gold-dim:        rgba(212,175,55,0.18);
+  --gold-glow:       rgba(212,175,55,0.12);
+  --gold-border:     rgba(212,175,55,0.30);
+  --on-dark:         rgba(255,255,255,0.92);
+  --on-dark-muted:   rgba(255,255,255,0.68);
+  --on-dark-subtle:  rgba(255,255,255,0.40);
+  --card-bg:         rgba(255,255,255,0.05);
+  --card-bg-hover:   rgba(255,255,255,0.08);
+  --glass:           rgba(15,45,80,0.55);
+  --glass-bg:        rgba(15,45,80,0.55);
+  --glass-border:    rgba(212,175,55,0.22);
+  --dawn-pink:       #e8a87c;
+  --dawn-blue:       #6495c8;
+  --radius-sm:       10px;
+  --radius-md:       16px;
+  --radius-lg:       24px;
+  --transition:      0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── Reset & Base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
+  background-attachment: fixed;
+  color: var(--on-dark);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* ─── Starfield background ──────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.50) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.30) 1px, transparent 1px),
+    radial-gradient(circle, rgba(212,175,55,0.45)  1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.20) 0.5px, transparent 0.5px);
+  background-size:    150px 120px, 90px 80px, 220px 180px, 60px 50px;
+  background-position: 20px 30px, 55px 15px, 100px 70px, 35px 45px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gold atmospheric glow */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(212,175,55,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 15%, rgba(100,120,200,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(212,175,55,0.06) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Twinkling Stars ───────────────────────────────────────── */
+.stars-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+
+.star--gold {
+  background: var(--gold);
+  width: 2px;
+  height: 2px;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50%      { opacity: 0.9; transform: scale(1.2); }
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.app-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ─── Story Section Base ────────────────────────────────────── */
+.story-section {
+  min-height: 60vh;
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.story-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-section:first-child {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Hero Section ──────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 0;
+  position: relative;
+}
+
+/* Moon */
+.moon-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 40px;
+}
+
+.moon {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    #fffde8 0%,
+    #f5e6a3 30%,
+    #d4af37 70%,
+    #b8942e 100%
+  );
+  box-shadow:
+    0 0 40px rgba(212,175,55,0.4),
+    0 0 80px rgba(212,175,55,0.2),
+    0 0 120px rgba(212,175,55,0.1),
+    inset -20px -10px 40px rgba(180,140,30,0.3);
+  animation: moonGlow 4s ease-in-out infinite;
+  position: relative;
+}
+
+.moon::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(200,170,60,0.2);
+  border-radius: 50%;
+  top: 40px;
+  left: 50px;
+}
+
+.moon::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: rgba(200,170,60,0.15);
+  border-radius: 50%;
+  top: 80px;
+  left: 100px;
+}
+
+@keyframes moonGlow {
+  0%, 100% { box-shadow: 0 0 40px rgba(212,175,55,0.4), 0 0 80px rgba(212,175,55,0.2), 0 0 120px rgba(212,175,55,0.1); }
+  50%      { box-shadow: 0 0 60px rgba(212,175,55,0.5), 0 0 100px rgba(212,175,55,0.3), 0 0 160px rgba(212,175,55,0.15); }
+}
+
+/* Moon crescent shadow */
+.moon-crescent {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 170px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, var(--bg-top) 0%, rgba(8,26,51,0.95) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--gold);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 20px rgba(212,175,55,0.3);
+}
+
+.hero-arabic {
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  line-height: 2.6;
+  word-spacing: 0.15em;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--on-dark-muted);
+  font-style: italic;
+  max-width: 500px;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scroll-indicator span {
+  font-size: 0.8rem;
+  color: var(--on-dark-subtle);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.chevron {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--gold-dim);
+  border-bottom: 2px solid var(--gold-dim);
+  transform: rotate(45deg);
+}
+
+.chevron:nth-child(2) { opacity: 0.6; }
+.chevron:nth-child(3) { opacity: 0.3; }
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%      { transform: translateY(10px); opacity: 0.5; }
+}
+
+/* ─── Section Titles ────────────────────────────────────────── */
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 32px;
+  text-shadow: 0 1px 12px rgba(212,175,55,0.2);
+}
+
+.section-title-icon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+/* ─── Glass Card ────────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  margin-bottom: 24px;
+}
+
+.glass-card p {
+  margin-bottom: 16px;
+  color: var(--on-dark);
+  font-size: 0.95rem;
+}
+
+.glass-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Hadith / Quote ────────────────────────────────────────── */
+.hadith-block {
+  background: rgba(212,175,55,0.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-style: italic;
+  color: var(--on-dark-muted);
+  font-size: 0.95rem;
+}
+
+.hadith-block .source {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ─── Nights Row ────────────────────────────────────────────── */
+.nights-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.night-cell {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--on-dark-subtle);
+}
+
+.night-cell.odd {
+  background: rgba(212,175,55,0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 16px rgba(212,175,55,0.15);
+  animation: nightPulse 3s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes nightPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(212,175,55,0.1); }
+  50%      { box-shadow: 0 0 24px rgba(212,175,55,0.3); }
+}
+
+.nights-label {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--on-dark-subtle);
+  margin-top: 12px;
+}
+
+/* ─── Surah Section ─────────────────────────────────────────── */
+.surah-container {
+  text-align: center;
+}
+
+.bismillah {
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  font-size: clamp(1.6rem, 6vw, 2.6rem);
+  line-height: 2.6;
+  word-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+
+.ayah-block {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(212,175,55,0.10);
+}
+
+.ayah-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.ayah-arabic,
+.glass-card .ayah-arabic {
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  line-height: 2.6;
+  word-spacing: 0.15em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.glass-card .bismillah {
+  font-size: clamp(1.6rem, 6vw, 2.6rem);
+}
+
+.ayah-number {
+  display: inline-block;
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  color: var(--gold);
+  font-size: 0.85em;
+}
+
+.ayah-translation {
+  font-size: 0.95rem;
+  color: var(--on-dark-muted);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.ayah-verse-num {
+  display: inline-block;
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 6px;
+  font-style: normal;
+}
+
+/* ─── 1000 Months Infographic ───────────────────────────────── */
+.infographic {
+  text-align: center;
+}
+
+.big-number {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 2px 30px rgba(212,175,55,0.3);
+}
+
+.big-number-label {
+  font-size: 1.1rem;
+  color: var(--on-dark-muted);
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.equals-sign {
+  font-size: 2rem;
+  color: var(--gold);
+  margin: 16px 0;
+}
+
+.years-display {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.infographic-text {
+  font-size: 1rem;
+  color: var(--on-dark-muted);
+  max-width: 480px;
+  margin: 24px auto 0;
+  line-height: 1.7;
+}
+
+/* Counter animation */
+.counter-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  margin: 24px 0;
+  overflow: hidden;
+}
+
+.counter-bar-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 3px;
+  transition: width 2s ease-out;
+}
+
+.counter-bar-fill.animate {
+  width: 100%;
+}
+
+.counter-months {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--on-dark-subtle);
+}
+
+.timeline-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+
+.timeline-block {
+  text-align: center;
+}
+
+.timeline-block .icon {
+  font-size: 2.5rem;
+  margin-bottom: 4px;
+}
+
+.timeline-block .label {
+  font-size: 0.75rem;
+  color: var(--on-dark-subtle);
+}
+
+.timeline-vs {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+/* ─── Angels Section ────────────────────────────────────────── */
+.angels-visual {
+  position: relative;
+  height: 200px;
+  margin: 32px 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(212,175,55,0.05) 0%, rgba(8,26,51,0.4) 100%);
+}
+
+.light-particle {
+  position: absolute;
+  width: var(--size, 4px);
+  height: var(--size, 4px);
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(212,175,55,0.4) 60%, transparent 100%);
+  border-radius: 50%;
+  animation: descend var(--dur, 4s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  left: var(--x, 50%);
+  top: -10px;
+}
+
+@keyframes descend {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 0.8; }
+  100% { transform: translateY(220px) scale(0.5); opacity: 0; }
+}
+
+.angels-text {
+  text-align: center;
+}
+
+.angels-text p {
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+.angels-text .arabic-inline {
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  direction: rtl;
+  unicode-bidi: isolate;
+  color: var(--gold-light);
+}
+
+/* ─── Dawn Section ──────────────────────────────────────────── */
+.dawn-section {
+  position: relative;
+}
+
+.dawn-gradient {
+  height: 120px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg,
+    var(--bg-top) 0%,
+    #0c2040 20%,
+    #1a3a5c 40%,
+    #3a5a7a 55%,
+    #6495c8 70%,
+    #e8a87c 85%,
+    #f0c89a 95%,
+    #fde8c8 100%
+  );
+  margin: 32px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.dawn-gradient::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(0deg, rgba(248,200,160,0.3) 0%, transparent 100%);
+}
+
+.dawn-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--on-dark-subtle);
+  margin-top: -8px;
+  padding: 0 4px;
+}
+
+.dawn-text {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.dawn-text p {
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+/* ─── Tips Cards ────────────────────────────────────────────── */
+.tips-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tip-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.tip-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tip-card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--gold);
+  transform: translateX(4px);
+}
+
+.tip-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.tip-content h3 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.tip-content p {
+  font-size: 0.92rem;
+  color: var(--on-dark-muted);
+  line-height: 1.6;
+}
+
+.tip-content .dua-arabic {
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  line-height: 2.2;
+  word-spacing: 0.15em;
+  color: #fff;
+  margin: 12px 0;
+}
+
+.tip-content .dua-transliteration {
+  display: block;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--on-dark-subtle);
+  margin-bottom: 6px;
+}
+
+.tip-content .dua-translation {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+/* ─── Closing Section ───────────────────────────────────────── */
+.closing {
+  text-align: center;
+  padding: 80px 0 40px;
+}
+
+.closing-text {
+  font-size: 1.1rem;
+  color: var(--on-dark);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.8;
+}
+
+.closing-ameen {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.closing-arabic {
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  line-height: 2.6;
+  word-spacing: 0.15em;
+  color: var(--gold-light);
+  margin-top: 8px;
+}
+
+/* ─── Divider ───────────────────────────────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--gold-dim);
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.section-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+/* ─── Portal Footer ─────────────────────────────────────────── */
+.portal-home-wrap {
+  text-align: center;
+  padding: 40px 0 60px;
+}
+
+.portal-home-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: rgba(212,175,55,0.10);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.portal-home-btn:hover {
+  background: rgba(212,175,55,0.20);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(212,175,55,0.15);
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+
+  .app-wrapper { padding: 0 16px; }
+
+  .story-section { padding: 60px 0; min-height: auto; }
+
+  .hero { min-height: 100svh; }
+
+  .moon-container { width: 140px; height: 140px; margin-bottom: 32px; }
+  .moon { width: 140px; height: 140px; }
+  .moon-crescent { width: 130px; height: 150px; }
+  .moon::before { width: 22px; height: 22px; top: 30px; left: 38px; }
+  .moon::after { width: 14px; height: 14px; top: 62px; left: 78px; }
+
+  .glass-card { padding: 24px 20px; }
+
+  .night-cell { width: 44px; height: 44px; font-size: 0.9rem; }
+
+  .tip-card { padding: 20px 16px; gap: 12px; }
+  .tip-icon { font-size: 1.5rem; }
+
+  .ayah-arabic { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+
+  .angels-visual { height: 160px; }
+}
+
+@media (max-width: 380px) {
+  .night-cell { width: 38px; height: 38px; font-size: 0.8rem; }
+  .nights-row { gap: 6px; }
+}
+
+/* ─── Meaning Grid ──────────────────────────────────────────── */
+.meaning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.meaning-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.meaning-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.15);
+}
+
+.meaning-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.meaning-card h3 {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.meaning-card p {
+  color: var(--on-dark-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Wisdom List ────────────────────────────────────────────── */
+.wisdom-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wisdom-list li {
+  padding: 10px 14px;
+  background: rgba(212,175,55,0.07);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ─── Number 27 Card ────────────────────────────────────────── */
+.number27-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.number27-display {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(4rem, 14vw, 6rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(212,175,55,0.4);
+  flex-shrink: 0;
+}
+
+.number27-explanation {
+  flex: 1;
+}
+
+.number27-explanation p {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.number27-explanation p:last-child { margin-bottom: 0; }
+
+.number27-math {
+  color: var(--on-dark-muted);
+  font-size: 0.9rem !important;
+}
+
+.math-sum {
+  display: inline-block;
+  background: rgba(212,175,55,0.12);
+  border: 1px solid var(--gold-dim);
+  border-radius: 6px;
+  padding: 2px 10px;
+  margin-left: 6px;
+  color: var(--gold-light);
+}
+
+@media (max-width: 480px) {
+  .number27-card { flex-direction: column; text-align: center; gap: 12px; }
+}
+
+/* ─── Forgiveness Cards ─────────────────────────────────────── */
+.forgiveness-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.forgive-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.forgive-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.forgive-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--on-dark-muted);
+}
+
+/* ─── Accessibility ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .story-section {
+    opacity: 1;
+    transform: none;
+  }
+  .tip-card {
+    opacity: 1;
+    transform: none;
+  }
+}

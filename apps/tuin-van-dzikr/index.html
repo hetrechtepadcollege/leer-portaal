@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/icons/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://hetrechtepadcollege.goatcounter.com;">
+    <title>De Tuin van Dzikr | Het Rechte Pad College</title>
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://leer.hetrechtepadcollege.nl/apps/dzikr-tuin/">
+    <meta property="og:title" content="De Tuin van Dzikr — Laat je tuin groeien met dzikr">
+    <meta property="og:description" content="Een interactieve dzikr-ervaring: leer de betekenis van dzikr terwijl je tuin groeit.">
+    <meta property="og:image" content="https://leer.hetrechtepadcollege.nl/images/share-banner.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="De Tuin van Dzikr — Laat je tuin groeien met dzikr">
+    <meta property="twitter:description" content="Een interactieve dzikr-ervaring: leer de betekenis van dzikr terwijl je tuin groeit.">
+    <meta property="twitter:image" content="https://leer.hetrechtepadcollege.nl/images/share-banner.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <!-- ========== Header ========== -->
+    <header class="app-header fade-section">
+        <img src="../../images/HRPC-logo.png" alt="Het Rechte Pad College" class="header-logo">
+        <h1 class="header-title">De Tuin van Dzikr</h1>
+        <p class="header-arabic" dir="rtl" lang="ar">ذِكْر</p>
+        <p class="header-subtitle">Laat je tuin groeien met de herinnering aan Allah</p>
+    </header>
+
+    <!-- ========== Intro ========== -->
+    <section class="intro-section fade-section">
+        <p>Dzikr betekent <em>herinnering</em> &mdash; het herinneren van Allah door Zijn namen te noemen en Hem te prijzen.
+            De Profeet &#xFDFA; zei:</p>
+        <p class="hadith-ref">&laquo;Het verschil tussen degene die zijn Heer gedenkt en degene die dat niet doet,
+            is als het verschil tussen de levende en de dode.&raquo; (Bukhari)</p>
+        <p>In deze tuin ontdek je drie vormen van dzikr. Elke dzikr laat iets moois groeien.</p>
+    </section>
+
+    <!-- ========== Garden ========== -->
+    <section class="garden-wrap fade-section" aria-label="Dzikr-tuin visualisatie">
+        <div class="garden-canvas" id="gardenCanvas"></div>
+        <div class="garden-zone-labels">
+            <div class="zone-label" dir="rtl" lang="ar">سُبْحَانَ اللّٰهِ</div>
+            <div class="zone-label" dir="rtl" lang="ar">اَلْحَمْدُ لِلّٰهِ</div>
+            <div class="zone-label" dir="rtl" lang="ar">اَللّٰهُ اَكْبَرُ</div>
+        </div>
+    </section>
+
+    <!-- ========== Dzikr cards ========== -->
+    <div class="dzikr-cards">
+
+        <!-- Card 1: SubhanAllah -->
+        <article class="dzikr-card card-subhanallah fade-section">
+            <p class="dzikr-arabic" dir="rtl" lang="ar">سُبْحَانَ اللّٰهِ</p>
+            <p class="dzikr-translit">Sub&#x1E25;&#x101;nAll&#x101;h</p>
+            <p class="dzikr-meaning">Glorie zij Allah &mdash; Allah is vrij van elke onvolkomenheid</p>
+            <p class="dzikr-explain">Wanneer je SubhanAllah zegt, prijs je Allah en erken je dat Hij perfect is,
+                vrij van elk gebrek. Het is een van de meest geliefde woorden bij Allah.</p>
+            <blockquote class="dzikr-hadith">&laquo;Twee woorden zijn licht op de tong, zwaar op de weegschaal,
+                en geliefd bij de Barmhartige: SubhanAllahi wa bihamdihi, SubhanAllahil-Adheem.&raquo;
+                (Bukhari &amp; Muslim)</blockquote>
+            <div class="dzikr-action">
+                <button class="dzikr-btn btn-subhanallah" data-dzikr="subhanallah"
+                        aria-label="Zeg SubhanAllah en plant een bloem">
+                    Plant een bloem
+                </button>
+                <span class="dzikr-count" id="countSubhanallah">0</span>
+            </div>
+        </article>
+
+        <!-- Card 2: Alhamdulillah -->
+        <article class="dzikr-card card-alhamdulillah fade-section">
+            <p class="dzikr-arabic" dir="rtl" lang="ar">اَلْحَمْدُ لِلّٰهِ</p>
+            <p class="dzikr-translit">Al-&#x1E25;amdu lill&#x101;h</p>
+            <p class="dzikr-meaning">Alle lof en dank komt toe aan Allah</p>
+            <p class="dzikr-explain">Met Alhamdulillah dank je Allah voor alles &mdash; voor het goede en zelfs
+                voor beproevingen, want Allah weet wat het beste voor ons is. Het is het eerste wat de bewoners
+                van het Paradijs zeggen.</p>
+            <blockquote class="dzikr-hadith">&laquo;Allah is tevreden met een dienaar die eet en Hem daarvoor dankt,
+                en die drinkt en Hem daarvoor dankt.&raquo; (Muslim)</blockquote>
+            <div class="dzikr-action">
+                <button class="dzikr-btn btn-alhamdulillah" data-dzikr="alhamdulillah"
+                        aria-label="Zeg Alhamdulillah en plant een boom">
+                    Plant een boom
+                </button>
+                <span class="dzikr-count" id="countAlhamdulillah">0</span>
+            </div>
+        </article>
+
+        <!-- Card 3: Allahu Akbar -->
+        <article class="dzikr-card card-allahuakbar fade-section">
+            <p class="dzikr-arabic" dir="rtl" lang="ar">اَللّٰهُ اَكْبَرُ</p>
+            <p class="dzikr-translit">All&#x101;hu Akbar</p>
+            <p class="dzikr-meaning">Allah is de Grootste</p>
+            <p class="dzikr-explain">Allahu Akbar herinnert ons eraan dat Allah groter is dan alles &mdash;
+                groter dan onze zorgen, onze problemen, en alles in deze wereld. Het is de opening van elk gebed.</p>
+            <blockquote class="dzikr-hadith">&laquo;De woorden SubhanAllah, Alhamdulillah, en Allahu Akbar
+                na elk gebed zijn drie&euml;ndertig keer elk.&raquo; (Muslim)</blockquote>
+            <div class="dzikr-action">
+                <button class="dzikr-btn btn-allahuakbar" data-dzikr="allahuakbar"
+                        aria-label="Zeg Allahu Akbar en laat een lichtbloesem verschijnen">
+                    Laat licht bloeien
+                </button>
+                <span class="dzikr-count" id="countAllahuakbar">0</span>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ========== Educational section ========== -->
+    <section class="edu-section fade-section">
+        <h2 class="edu-title">Wist je dat?</h2>
+        <div class="edu-facts">
+            <div class="edu-fact">
+                <span class="fact-icon" aria-hidden="true">&#9733;</span>
+                De Profeet &#xFDFA; zei dat het zeggen van SubhanAllah 33&times;, Alhamdulillah 33&times;,
+                en Allahu Akbar 34&times; na elk gebed een enorme beloning heeft.
+            </div>
+            <div class="edu-fact">
+                <span class="fact-icon" aria-hidden="true">&#9733;</span>
+                Dzikr brengt rust in het hart. Allah zegt in de Koran:
+                <em>&laquo;Weet dat door het gedenken van Allah de harten rust vinden.&raquo;</em>
+                (Ar-Ra'd 13:28)
+            </div>
+            <div class="edu-fact">
+                <span class="fact-icon" aria-hidden="true">&#9733;</span>
+                De tasbih (gebedsketting) wordt gebruikt om bij te houden, maar je kunt ook je vingers
+                gebruiken &mdash; dat is zelfs de Sunnah!
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Reset ========== -->
+    <div class="reset-wrap">
+        <button class="reset-btn" id="resetBtn">Reset tuin</button>
+    </div>
+
+    <!-- ========== Footer ========== -->
+    <footer>
+        <div class="portal-home-wrap">
+            <a href="https://leer.hetrechtepadcollege.nl/" class="portal-home-btn">&larr; Terug naar Leerportaal</a>
+        </div>
+    </footer>
+
+</div><!-- .page-wrapper -->
+
+<!-- ========== JavaScript ========== -->
+<script>
+(function () {
+    'use strict';
+
+    /* ---------- Storage ---------- */
+    var STORAGE_KEY = 'dzikrTuin';
+
+    function loadState() {
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) return JSON.parse(raw);
+        } catch (e) { /* ignore */ }
+        return { subhanallah: 0, alhamdulillah: 0, allahuakbar: 0 };
+    }
+
+    function saveState(state) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+    }
+
+    var state = loadState();
+
+    /* ---------- DOM refs ---------- */
+    var canvas = document.getElementById('gardenCanvas');
+    var countEls = {
+        subhanallah: document.getElementById('countSubhanallah'),
+        alhamdulillah: document.getElementById('countAlhamdulillah'),
+        allahuakbar: document.getElementById('countAllahuakbar')
+    };
+
+    /* ---------- Seeded random for stable positioning ---------- */
+    function seededRandom(seed) {
+        var x = Math.sin(seed * 9301 + 49297) * 49297;
+        return x - Math.floor(x);
+    }
+
+    /* ---------- Render counters ---------- */
+    function renderCounters() {
+        countEls.subhanallah.textContent = state.subhanallah;
+        countEls.alhamdulillah.textContent = state.alhamdulillah;
+        countEls.allahuakbar.textContent = state.allahuakbar;
+    }
+
+    /* ---------- Flower colors ---------- */
+    var flowerColors = [
+        ['#f5a5b8', '#e88ca5'],
+        ['#e8a5d0', '#d88cbf'],
+        ['#f5b8c8', '#e89caa'],
+        ['#d4a5e8', '#c08cd6'],
+        ['#f5c4d5', '#e8aab8'],
+        ['#e0a0c8', '#d088b0']
+    ];
+
+    /* ---------- Create flower ---------- */
+    function createFlower(index, animate) {
+        var el = document.createElement('div');
+        el.className = 'garden-flower';
+        if (!animate) el.style.animation = 'none';
+
+        var r = seededRandom(index + 0.1);
+        var r2 = seededRandom(index + 0.7);
+        var leftPct = 2 + r * 28;            /* zone: 2% – 30% */
+        var bottomPct = 8 + r2 * 30;         /* 8% – 38% from bottom */
+        var scale = 0.7 + seededRandom(index + 0.3) * 0.6;
+        var stemH = 20 + seededRandom(index + 0.5) * 25;
+        var colors = flowerColors[index % flowerColors.length];
+
+        el.style.left = leftPct + '%';
+        el.style.bottom = bottomPct + '%';
+        el.style.transform = 'scale(' + scale + ')';
+        if (!animate) el.style.opacity = '1';
+
+        var petalSize = 9 + Math.round(seededRandom(index + 0.9) * 5);
+
+        el.innerHTML =
+            '<div class="flower-stem" style="height:' + stemH + 'px"></div>' +
+            '<div class="flower-head" style="top:-' + (stemH - 2) + 'px">' +
+                '<div class="flower-petal" style="width:' + petalSize + 'px;height:' + petalSize + 'px;background:' + colors[0] + '"></div>' +
+                '<div class="flower-petal" style="width:' + petalSize + 'px;height:' + petalSize + 'px;background:' + colors[1] + '"></div>' +
+                '<div class="flower-petal" style="width:' + petalSize + 'px;height:' + petalSize + 'px;background:' + colors[0] + '"></div>' +
+                '<div class="flower-petal" style="width:' + petalSize + 'px;height:' + petalSize + 'px;background:' + colors[1] + '"></div>' +
+                '<div class="flower-petal" style="width:' + petalSize + 'px;height:' + petalSize + 'px;background:' + colors[0] + '"></div>' +
+                '<div class="flower-center"></div>' +
+            '</div>';
+
+        /* Vary sway delay */
+        el.style.animationDelay = '0s, ' + (seededRandom(index + 0.4) * 3).toFixed(1) + 's';
+
+        return el;
+    }
+
+    /* ---------- Create tree ---------- */
+    function createTree(index, animate) {
+        var el = document.createElement('div');
+        el.className = 'garden-tree';
+        if (!animate) { el.style.animation = 'none'; el.style.opacity = '1'; }
+
+        var r = seededRandom(index + 100.1);
+        var r2 = seededRandom(index + 100.7);
+        var leftPct = 35 + r * 28;           /* zone: 35% – 63% */
+        var bottomPct = 8 + r2 * 22;
+        var scale = 0.75 + seededRandom(index + 100.3) * 0.5;
+        var trunkH = 30 + Math.round(seededRandom(index + 100.5) * 20);
+        var trunkW = 5 + Math.round(seededRandom(index + 100.6) * 3);
+        var canopySize = 28 + Math.round(seededRandom(index + 100.8) * 18);
+
+        el.style.left = leftPct + '%';
+        el.style.bottom = bottomPct + '%';
+        el.style.transform = 'scale(' + scale + ')';
+
+        /* Fruits */
+        var fruitCount = 2 + Math.round(seededRandom(index + 100.9) * 4);
+        var fruitsHtml = '';
+        for (var f = 0; f < fruitCount; f++) {
+            var fx = Math.round(seededRandom(index * 7 + f) * (canopySize - 8));
+            var fy = Math.round(seededRandom(index * 11 + f + .3) * (canopySize - 8));
+            fruitsHtml += '<div class="tree-fruit" style="left:' + fx + 'px;top:' + fy + 'px"></div>';
+        }
+
+        el.innerHTML =
+            '<div class="tree-trunk" style="height:' + trunkH + 'px;width:' + trunkW + 'px"></div>' +
+            '<div class="tree-canopy" style="width:' + canopySize + 'px;height:' + canopySize + 'px;' +
+                'top:-' + (trunkH + canopySize * 0.6) + 'px;left:50%;transform:translateX(-50%)">' +
+                fruitsHtml +
+            '</div>';
+
+        el.style.animationDelay = '0s, ' + (seededRandom(index + 100.4) * 4).toFixed(1) + 's';
+
+        return el;
+    }
+
+    /* ---------- Create star blossom ---------- */
+    function createStar(index, animate) {
+        var el = document.createElement('div');
+        el.className = 'garden-star';
+        if (!animate) { el.style.animation = 'none'; el.style.opacity = '1'; }
+
+        var r = seededRandom(index + 200.1);
+        var r2 = seededRandom(index + 200.7);
+        var leftPct = 68 + r * 28;           /* zone: 68% – 96% */
+        var bottomPct = 8 + r2 * 40;
+        var size = 14 + Math.round(seededRandom(index + 200.3) * 12);
+        var glowSize = size * 2.5;
+
+        el.style.left = leftPct + '%';
+        el.style.bottom = bottomPct + '%';
+
+        el.innerHTML =
+            '<div class="star-shape" style="width:' + size + 'px;height:' + size + 'px">' +
+                '<div class="star-inner" style="width:' + size + 'px;height:' + size + 'px"></div>' +
+                '<div class="star-glow" style="width:' + glowSize + 'px;height:' + glowSize + 'px"></div>' +
+            '</div>';
+
+        el.style.animationDelay = '0s, ' + (seededRandom(index + 200.4) * 2.5).toFixed(1) + 's';
+
+        return el;
+    }
+
+    /* ---------- Render garden ---------- */
+    function renderGarden(animateIndex) {
+        /* animateIndex: { type, index } — only this item animates, rest is instant */
+        canvas.innerHTML = '';
+
+        var maxF = Math.min(state.subhanallah, 15);
+        var maxT = Math.min(state.alhamdulillah, 8);
+        var maxS = Math.min(state.allahuakbar, 12);
+
+        for (var i = 0; i < maxF; i++) {
+            var anim = animateIndex && animateIndex.type === 'subhanallah' && i === maxF - 1;
+            canvas.appendChild(createFlower(i, anim));
+        }
+        for (var j = 0; j < maxT; j++) {
+            var anim2 = animateIndex && animateIndex.type === 'alhamdulillah' && j === maxT - 1;
+            canvas.appendChild(createTree(j, anim2));
+        }
+        for (var k = 0; k < maxS; k++) {
+            var anim3 = animateIndex && animateIndex.type === 'allahuakbar' && k === maxS - 1;
+            canvas.appendChild(createStar(k, anim3));
+        }
+
+        /* If counts exceed visible max, make existing items bigger */
+        if (state.subhanallah > 15) {
+            var flowers = canvas.querySelectorAll('.garden-flower');
+            var growFactor = 1 + (state.subhanallah - 15) * 0.03;
+            flowers.forEach(function (fl) {
+                fl.style.transform = fl.style.transform.replace(/scale\([^)]+\)/, 'scale(' + (parseFloat(fl.style.transform.match(/scale\(([^)]+)\)/)[1]) * growFactor).toFixed(2) + ')');
+            });
+        }
+        if (state.alhamdulillah > 8) {
+            var trees = canvas.querySelectorAll('.garden-tree');
+            var gf2 = 1 + (state.alhamdulillah - 8) * 0.04;
+            trees.forEach(function (tr) {
+                tr.style.transform = tr.style.transform.replace(/scale\([^)]+\)/, 'scale(' + (parseFloat(tr.style.transform.match(/scale\(([^)]+)\)/)[1]) * gf2).toFixed(2) + ')');
+            });
+        }
+        if (state.allahuakbar > 12) {
+            var stars = canvas.querySelectorAll('.garden-star');
+            stars.forEach(function (st) {
+                var extra = (state.allahuakbar - 12) * 0.5;
+                st.querySelector('.star-glow').style.boxShadow = '0 0 ' + (8 + extra) + 'px rgba(255,248,220,.6)';
+            });
+        }
+    }
+
+    /* ---------- Button ripple effect ---------- */
+    function triggerRipple(btn) {
+        btn.classList.remove('ripple');
+        void btn.offsetWidth;          /* force reflow */
+        btn.classList.add('ripple');
+        setTimeout(function () { btn.classList.remove('ripple'); }, 500);
+    }
+
+    /* ---------- Handle dzikr tap ---------- */
+    function handleDzikr(type) {
+        state[type]++;
+        saveState(state);
+        renderCounters();
+        renderGarden({ type: type, index: state[type] - 1 });
+
+        /* GoatCounter event */
+        if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: 'dzikr-tuin/tap/' + type, title: type, event: true });
+        }
+    }
+
+    /* ---------- Bind buttons ---------- */
+    document.querySelectorAll('.dzikr-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var type = this.getAttribute('data-dzikr');
+            triggerRipple(this);
+            handleDzikr(type);
+        });
+    });
+
+    /* ---------- Reset ---------- */
+    document.getElementById('resetBtn').addEventListener('click', function () {
+        if (confirm('Weet je zeker dat je je tuin wilt resetten? Alle voortgang gaat verloren.')) {
+            state = { subhanallah: 0, alhamdulillah: 0, allahuakbar: 0 };
+            saveState(state);
+            renderCounters();
+            renderGarden(null);
+        }
+    });
+
+    /* ---------- Intersection Observer for fade-in ---------- */
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-section').forEach(function (el) {
+            observer.observe(el);
+        });
+    } else {
+        document.querySelectorAll('.fade-section').forEach(function (el) {
+            el.classList.add('visible');
+        });
+    }
+
+    /* ---------- Initial render ---------- */
+    renderCounters();
+    renderGarden(null);
+
+})();
+</script>
+
+<!-- ========== Analytics ========== -->
+<script data-goatcounter="https://hetrechtepadcollege.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"
+        integrity="sha384-DGiREytotlUiLflu8vLo0vvfxKWn36pKPT1ZBhh3R+3vhwrS/4p3H9eys9Zr2bPQ"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

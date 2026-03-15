@@ -1,0 +1,705 @@
+/* ============================================
+   Dzikr-Tuin — Stylesheet
+   ============================================ */
+
+/* ─── Al Qalam Quran Majeed font ────────────────────────────────── */
+@font-face {
+    font-family: 'AlQalamQuranMajeed';
+    src: url('fonts/AlQalamQuranMajeed.ttf') format('truetype');
+    font-display: swap;
+}
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    color: #f0ece4;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(170deg, #081a33 0%, #0f2d50 45%, #0c2642 100%);
+    background-attachment: fixed;
+}
+
+/* ---------- Starfield ---------- */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        radial-gradient(1px 1px at 12% 8%,  #d4af37 60%, transparent 100%),
+        radial-gradient(1px 1px at 27% 14%, #d4af37 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 45% 6%, #fff8dc 70%, transparent 100%),
+        radial-gradient(1px 1px at 68% 11%, #d4af37 55%, transparent 100%),
+        radial-gradient(1px 1px at 82% 4%,  #d4af37 50%, transparent 100%),
+        radial-gradient(1.3px 1.3px at 5% 25%, #fff8dc 60%, transparent 100%),
+        radial-gradient(1px 1px at 35% 30%, #d4af37 50%, transparent 100%),
+        radial-gradient(1px 1px at 55% 22%, #d4af37 45%, transparent 100%),
+        radial-gradient(1.1px 1.1px at 90% 28%, #fff8dc 55%, transparent 100%),
+        radial-gradient(1px 1px at 18% 42%, #d4af37 50%, transparent 100%),
+        radial-gradient(1px 1px at 72% 38%, #d4af37 55%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 50% 50%, #fff8dc 65%, transparent 100%),
+        radial-gradient(1px 1px at 8% 58%,  #d4af37 50%, transparent 100%),
+        radial-gradient(1px 1px at 62% 55%, #d4af37 45%, transparent 100%),
+        radial-gradient(1.1px 1.1px at 88% 52%, #fff8dc 60%, transparent 100%),
+        radial-gradient(1px 1px at 30% 65%, #d4af37 50%, transparent 100%),
+        radial-gradient(1px 1px at 78% 70%, #d4af37 55%, transparent 100%),
+        radial-gradient(1.3px 1.3px at 15% 78%, #fff8dc 70%, transparent 100%),
+        radial-gradient(1px 1px at 42% 82%, #d4af37 50%, transparent 100%),
+        radial-gradient(1px 1px at 95% 75%, #d4af37 45%, transparent 100%),
+        radial-gradient(1px 1px at 58% 88%, #d4af37 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 22% 92%, #fff8dc 60%, transparent 100%),
+        radial-gradient(1px 1px at 85% 95%, #d4af37 55%, transparent 100%);
+    opacity: .55;
+}
+
+/* ---------- Wrapper ---------- */
+.page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2rem;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+    text-align: center;
+    padding: 1rem 0 1.5rem;
+}
+
+.header-logo {
+    width: 72px;
+    height: auto;
+    margin-bottom: .75rem;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, .35));
+}
+
+.header-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #d4af37;
+    line-height: 1.2;
+    text-shadow: 0 2px 12px rgba(212, 175, 55, .3);
+}
+
+.header-arabic {
+    font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+    font-size: clamp(1.6rem, 6vw, 2.6rem);
+    line-height: 2.6;
+    word-spacing: 0.15em;
+    color: #e8d48b;
+    margin-top: .15rem;
+    text-align: center;
+}
+
+.header-subtitle {
+    font-size: .95rem;
+    color: rgba(240, 236, 228, .8);
+    margin-top: .5rem;
+    line-height: 1.5;
+}
+
+/* ---------- Section fade-in ---------- */
+.fade-section {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- Intro ---------- */
+.intro-section {
+    background: rgba(212, 175, 55, .06);
+    border: 1px solid rgba(212, 175, 55, .18);
+    border-radius: 14px;
+    padding: 1.25rem 1.15rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-size: .93rem;
+}
+
+.intro-section p + p {
+    margin-top: .75rem;
+}
+
+.intro-section .hadith-ref {
+    font-style: italic;
+    color: #e8d48b;
+    font-size: .88rem;
+}
+
+/* ---------- Garden ---------- */
+.garden-wrap {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+    border: 1px solid rgba(212, 175, 55, .2);
+    background: linear-gradient(180deg,
+        #081a33 0%,
+        #0c2240 55%,
+        #0e2a1e 78%,
+        #132b14 88%,
+        #1a3518 100%);
+}
+
+/* Ground layer */
+.garden-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28%;
+    background: linear-gradient(180deg,
+        rgba(26, 53, 24, 0) 0%,
+        rgba(26, 53, 24, .6) 30%,
+        rgba(34, 60, 28, .85) 60%,
+        rgba(28, 48, 22, .95) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Zone labels */
+.garden-zone-labels {
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.zone-label {
+    font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    line-height: 2.6;
+    word-spacing: 0.15em;
+    color: rgba(232, 212, 139, .55);
+    text-align: center;
+}
+
+/* Garden items container */
+.garden-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+/* ---------- Flower (SubhanAllah) ---------- */
+.garden-flower {
+    position: absolute;
+    animation: plantGrow .8s cubic-bezier(.34, 1.56, .64, 1) forwards;
+    transform-origin: bottom center;
+}
+
+.flower-stem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(180deg, #4a7c3f, #3a6330);
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+.flower-head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flower-petal {
+    position: absolute;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.flower-petal:nth-child(1) { transform: translate(-50%, -100%); }
+.flower-petal:nth-child(2) { transform: translate(30%, -50%) rotate(72deg); }
+.flower-petal:nth-child(3) { transform: translate(10%, 20%) rotate(144deg); }
+.flower-petal:nth-child(4) { transform: translate(-110%, 20%) rotate(216deg); }
+.flower-petal:nth-child(5) { transform: translate(-130%, -50%) rotate(288deg); }
+
+.flower-center {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #f5d76e;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Sway animation */
+.garden-flower {
+    animation: plantGrow .8s cubic-bezier(.34, 1.56, .64, 1) forwards,
+               flowerSway 4s ease-in-out infinite;
+    animation-delay: 0s, .8s;
+}
+
+/* ---------- Tree (Alhamdulillah) ---------- */
+.garden-tree {
+    position: absolute;
+    animation: treeGrow 1s cubic-bezier(.34, 1.56, .64, 1) forwards;
+    transform-origin: bottom center;
+}
+
+.tree-trunk {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #5a3e1a, #7a5428, #5a3e1a);
+    border-radius: 2px;
+}
+
+.tree-canopy {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%,
+        #3d7a2e 0%, #2d5e20 50%, #1f4a16 100%);
+    box-shadow: inset -4px -4px 8px rgba(0,0,0,.2),
+                0 2px 8px rgba(0,0,0,.3);
+}
+
+.tree-fruit {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle at 35% 35%, #f5d76e, #d4af37);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(212, 175, 55, .4);
+}
+
+.garden-tree {
+    animation: treeGrow 1s cubic-bezier(.34, 1.56, .64, 1) forwards,
+               treeSway 6s ease-in-out infinite;
+    animation-delay: 0s, 1s;
+}
+
+/* ---------- Star blossom (Allahu Akbar) ---------- */
+.garden-star {
+    position: absolute;
+    animation: starAppear 1s cubic-bezier(.34, 1.56, .64, 1) forwards;
+    transform-origin: center center;
+}
+
+.star-shape {
+    position: relative;
+    display: inline-block;
+    color: #fff8dc;
+    filter: drop-shadow(0 0 6px rgba(255, 248, 220, .6));
+}
+
+.star-shape::before,
+.star-shape::after {
+    content: '';
+    position: absolute;
+}
+
+/* CSS star using clip-path */
+.star-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 50% 50%, #fffef0, #f5d76e, #d4af37);
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+        2% 35%, 39% 35%
+    );
+    box-shadow: 0 0 12px rgba(212, 175, 55, .5);
+}
+
+.star-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 248, 220, .3) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.garden-star {
+    animation: starAppear 1s cubic-bezier(.34, 1.56, .64, 1) forwards,
+               starPulse 3s ease-in-out infinite;
+    animation-delay: 0s, 1s;
+}
+
+/* ---------- Garden animations ---------- */
+@keyframes plantGrow {
+    0%   { transform: scaleY(0) scaleX(0); opacity: 0; }
+    60%  { transform: scaleY(1.1) scaleX(1.05); opacity: 1; }
+    100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+
+@keyframes treeGrow {
+    0%   { transform: scaleY(0) scaleX(0); opacity: 0; }
+    50%  { transform: scaleY(1.05) scaleX(.95); opacity: 1; }
+    100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+
+@keyframes starAppear {
+    0%   { transform: scale(0) rotate(-30deg); opacity: 0; }
+    70%  { transform: scale(1.2) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes flowerSway {
+    0%, 100% { transform: rotate(0deg); }
+    25%      { transform: rotate(2deg); }
+    75%      { transform: rotate(-2deg); }
+}
+
+@keyframes treeSway {
+    0%, 100% { transform: rotate(0deg); }
+    33%      { transform: rotate(.8deg); }
+    66%      { transform: rotate(-.8deg); }
+}
+
+@keyframes starPulse {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 248, 220, .4)); }
+    50%      { filter: drop-shadow(0 0 10px rgba(255, 248, 220, .8)); }
+}
+
+/* ---------- Dzikr cards ---------- */
+.dzikr-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.dzikr-card {
+    background: rgba(212, 175, 55, .05);
+    border: 1px solid rgba(212, 175, 55, .18);
+    border-radius: 16px;
+    padding: 1.4rem 1.2rem;
+    transition: border-color .3s, box-shadow .3s;
+}
+
+.dzikr-card:hover {
+    border-color: rgba(212, 175, 55, .35);
+    box-shadow: 0 0 20px rgba(212, 175, 55, .08);
+}
+
+.dzikr-card.card-subhanallah { border-left: 3px solid #e88ca5; }
+.dzikr-card.card-alhamdulillah { border-left: 3px solid #5cb85c; }
+.dzikr-card.card-allahuakbar { border-left: 3px solid #f5d76e; }
+
+/* Arabic text in card */
+.dzikr-arabic {
+    font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    color: #d4af37;
+    text-align: center;
+    line-height: 2.6;
+    word-spacing: 0.15em;
+    margin-bottom: .25rem;
+}
+
+.dzikr-translit {
+    text-align: center;
+    font-size: .92rem;
+    color: #e8d48b;
+    font-style: italic;
+    margin-bottom: .2rem;
+}
+
+.dzikr-meaning {
+    text-align: center;
+    font-size: .88rem;
+    color: rgba(240, 236, 228, .75);
+    margin-bottom: .85rem;
+    font-weight: 600;
+}
+
+.dzikr-explain {
+    font-size: .9rem;
+    line-height: 1.65;
+    color: rgba(240, 236, 228, .85);
+    margin-bottom: .75rem;
+}
+
+.dzikr-hadith {
+    font-size: .84rem;
+    line-height: 1.6;
+    color: #e8d48b;
+    font-style: italic;
+    border-left: 2px solid rgba(212, 175, 55, .3);
+    padding-left: .75rem;
+    margin-bottom: 1rem;
+}
+
+/* Tap area */
+.dzikr-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: .75rem;
+}
+
+.dzikr-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: .92rem;
+    color: #081a33;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .25s;
+    overflow: hidden;
+    min-height: 48px;
+    min-width: 48px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.dzikr-btn:active {
+    transform: scale(.95);
+}
+
+.dzikr-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,.3);
+    border-radius: inherit;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .5s, opacity .5s;
+}
+
+.dzikr-btn.ripple::after {
+    transform: scale(2.5);
+    opacity: 0;
+    transition: transform .5s, opacity .5s;
+}
+
+.btn-subhanallah {
+    background: linear-gradient(135deg, #f5a5b8, #e88ca5);
+    box-shadow: 0 4px 14px rgba(232, 140, 165, .3);
+}
+.btn-subhanallah:hover {
+    box-shadow: 0 6px 20px rgba(232, 140, 165, .45);
+}
+
+.btn-alhamdulillah {
+    background: linear-gradient(135deg, #7dcc7d, #5cb85c);
+    box-shadow: 0 4px 14px rgba(92, 184, 92, .3);
+}
+.btn-alhamdulillah:hover {
+    box-shadow: 0 6px 20px rgba(92, 184, 92, .45);
+}
+
+.btn-allahuakbar {
+    background: linear-gradient(135deg, #f7e588, #f5d76e);
+    box-shadow: 0 4px 14px rgba(245, 215, 110, .3);
+}
+.btn-allahuakbar:hover {
+    box-shadow: 0 6px 20px rgba(245, 215, 110, .45);
+}
+
+/* Counter badge */
+.dzikr-count {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #d4af37;
+    min-width: 2.5rem;
+    text-align: center;
+}
+
+/* ---------- Educational footer ---------- */
+.edu-section {
+    margin-bottom: 2rem;
+}
+
+.edu-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #d4af37;
+    margin-bottom: .85rem;
+    text-align: center;
+}
+
+.edu-facts {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.edu-fact {
+    background: rgba(212, 175, 55, .05);
+    border: 1px solid rgba(212, 175, 55, .12);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    font-size: .88rem;
+    line-height: 1.65;
+    color: rgba(240, 236, 228, .85);
+}
+
+.edu-fact .fact-icon {
+    margin-right: .4rem;
+    color: #d4af37;
+}
+
+/* ---------- Reset button ---------- */
+.reset-wrap {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.reset-btn {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, .2);
+    color: rgba(240, 236, 228, .45);
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .78rem;
+    padding: .45rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color .3s, border-color .3s;
+}
+
+.reset-btn:hover {
+    color: rgba(240, 236, 228, .7);
+    border-color: rgba(212, 175, 55, .35);
+}
+
+/* ---------- Portal home button ---------- */
+.portal-home-wrap {
+    text-align: center;
+    padding: 1.5rem 0 1rem;
+    border-top: 1px solid rgba(212, 175, 55, .12);
+}
+
+.portal-home-btn {
+    display: inline-block;
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .92rem;
+    padding: .6rem 1.2rem;
+    border: 1px solid rgba(212, 175, 55, .3);
+    border-radius: 10px;
+    transition: background .3s, color .3s;
+}
+
+.portal-home-btn:hover {
+    background: rgba(212, 175, 55, .1);
+    color: #e8d48b;
+}
+
+/* ---------- Responsive ---------- */
+@media (min-width: 520px) {
+    .page-wrapper {
+        padding: 2rem 1.5rem 2.5rem;
+    }
+
+    .header-title {
+        font-size: 2.4rem;
+    }
+
+    .garden-wrap {
+        height: 380px;
+    }
+
+    .dzikr-arabic {
+        font-size: 2.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-wrapper {
+        max-width: 720px;
+    }
+
+    .garden-wrap {
+        height: 420px;
+    }
+
+    .dzikr-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .dzikr-card {
+        padding: 1.2rem 1rem;
+    }
+
+    .dzikr-arabic {
+        font-size: 1.5rem;
+    }
+
+    .dzikr-explain {
+        font-size: .82rem;
+    }
+
+    .dzikr-hadith {
+        font-size: .78rem;
+    }
+
+    .dzikr-btn {
+        padding: .65rem 1.1rem;
+        font-size: .84rem;
+    }
+
+    .dzikr-action {
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
+
+/* ---------- Accessibility: reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .fade-section {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .garden-flower,
+    .garden-tree,
+    .garden-star {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}

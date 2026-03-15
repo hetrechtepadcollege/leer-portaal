@@ -1,3 +1,10 @@
+/* ─── AlQalam Quran font ─────────────────────────────────────── */
+@font-face {
+  font-family: 'AlQalamQuranMajeed';
+  src: url('fonts/AlQalamQuranMajeed.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   --bg-top: #081a33;
   --bg-mid: #0f2d50;

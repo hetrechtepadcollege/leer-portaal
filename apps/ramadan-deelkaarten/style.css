@@ -1,9 +1,7 @@
-/* ─── IndoPak Quran font ──────────────────────────────────────────────────────── */
+/* ─── AlQalam Quran font ──────────────────────────────────────────────────────── */
 @font-face {
-  font-family: 'PDMSSaleemQuranFont';
-  src: url('fonts/PDMSSaleemQuranFont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'AlQalamQuranMajeed';
+  src: url('fonts/AlQalamQuranMajeed.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -206,12 +204,11 @@ body {
 
 /* ─── Arabische tekst ─────────────────────────────────────────────────────────── */
 .arabisch {
-  font-family: 'PDMSSaleemQuranFont', 'Amiri', serif;
-  font-size: clamp(1.55rem, 5.5vw, 2rem);
+  font-family: 'AlQalamQuranMajeed', 'Amiri', serif;
+  font-size: clamp(2.2rem, 6vw, 2.8rem);
   line-height: 2.6;
-  word-spacing: 0.18em;
+  word-spacing: 0.15em;
   color: var(--cream);
-  direction: rtl;
   text-align: right;
   margin-bottom: 8px;
 }
